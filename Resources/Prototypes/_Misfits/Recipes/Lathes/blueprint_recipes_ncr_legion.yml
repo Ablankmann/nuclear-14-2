@@ -1752,9 +1752,9 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 5500
+    Steel: 7500
 
-    N14Iron: 150
+    N14Iron: 350
 
     Leather: 100
 
