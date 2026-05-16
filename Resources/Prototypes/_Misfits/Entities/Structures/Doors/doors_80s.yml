@@ -1,0 +1,69 @@
+﻿- type: entity
+  parent: N14DoorWoodSlanted
+  id: N14DoorWoodSecureLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorWoodSlanted
+  id: N14DoorWoodSecureLocked80sHead
+  suffix: 80s, Locked, Head
+  components:
+  - type: AccessReader
+    access: [["80sHead"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMetalBlueSlanted
+  id: N14DoorMetalSlantedLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMetalBarSlanted
+  id: N14DoorCellSlantedLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorWoodWhiteSlanted
+  id: N14DoorWoodSlantedWhiteLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorWoodRedSlanted
+  id: N14DoorWoodSlantedRedLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: FenceMetalGate
+  id: N14DoorFenceMetalGateLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
