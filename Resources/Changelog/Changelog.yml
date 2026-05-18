@@ -5281,3 +5281,23 @@ Entries:
   id: 5906
   time: '2026-05-18T15:27:42.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/544
+- author: Sirius
+  changes:
+    - type: Add
+      message: >-
+        As part of Mayor Frost's campaign to reinvent the Bazaar, the recently
+        established Bar has seen part of the town's profits from the Shop
+        redirected into completely rebuilding it into an inn, complete with a
+        new separate kitchen and bar area.
+    - type: Remove
+      message: >-
+        Several unused aspects of the town have been removed to make room for
+        the rooms for the inn, including several redundant workshop areas.
+    - type: Tweak
+      message: >-
+        Lots of the map in this area, and around the town in general, use the
+        "no roof" marker for blocking weather game rules. The markers in the
+        newly built inn have been switched to the roofed variant.
+  id: 5907
+  time: '2026-05-18T16:12:43.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/548
