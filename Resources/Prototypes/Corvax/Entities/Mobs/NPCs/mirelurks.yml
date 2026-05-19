@@ -62,8 +62,10 @@
     - Chinese
     - Spanish
     - Latin
+    - Tribal
     - N14Robot
     - N14BrotherBeep
+    - Sign
   - type: Body # #Misfits Add - override N14Animal with N14PetAnimal to include heart (Medicine/Poison metabolizer)
     prototype: N14PetAnimal
   - type: Hands # #Misfits Add - allows player-controlled mirelurk pets to drag items

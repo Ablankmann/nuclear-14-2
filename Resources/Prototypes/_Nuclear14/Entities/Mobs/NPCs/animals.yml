@@ -451,8 +451,10 @@
     - Chinese
     - Spanish
     - Latin
+    - Tribal
     - N14Robot
     - N14BrotherBeep
+    - Sign
   # #Misfits Add - pack animal inventory: 4 backpack slots via brahmin template; Strippable lets players equip/remove packs
   - type: Inventory
     templateId: brahmin
