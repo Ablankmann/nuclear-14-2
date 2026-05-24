@@ -5570,3 +5570,14 @@ Entries:
   id: 5933
   time: '2026-05-22T23:45:20.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/580
+- author: pierow
+  changes:
+    - type: Tweak
+      message: >-
+        Woodcutting no longer automatically combines log stacks; no need to
+        split logs for planks anymore!
+    - type: Tweak
+      message: Stacks no longer automatically combine for destruction scrapping (🫃)
+  id: 5934
+  time: '2026-05-24T14:16:14.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/584
