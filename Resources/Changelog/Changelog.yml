@@ -5745,3 +5745,12 @@ Entries:
   id: 5950
   time: '2026-05-25T15:05:40.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/595
+- author: Taro_varne
+  changes:
+    - type: Add
+      message: Added C-27 Combat armor Set
+    - type: Add
+      message: Added C-27 Combat armor Craft onto the Generic Blueprint
+  id: 5951
+  time: '2026-05-25T17:58:03.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/599
