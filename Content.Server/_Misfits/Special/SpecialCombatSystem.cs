@@ -4,6 +4,7 @@ using Content.Shared.Damage;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Random;
 
@@ -34,8 +35,8 @@ public sealed class SpecialCombatSystem : EntitySystem
         var damage = args.BaseDamage;
         ApplyStrengthMeleeModifier(args.User, ref damage, special);
 
-        // Melee weapons use the same Luck crit curve as one-shot ranged weapons.
-        TryApplyLuckCritical(args.User, ref damage, special, uid);
+        // Melee weapons use the same Luck crit curve as ranged weapons.
+        TryApplyLuckCritical(args.User, ref damage, special);
 
         // Preserve the original event damage and apply only the SPECIAL delta.
         args.BonusDamage += damage - args.BaseDamage;
@@ -72,7 +73,7 @@ public sealed class SpecialCombatSystem : EntitySystem
             args.Damage = damage;
     }
 
-    private bool TryApplyLuckCritical(EntityUid user, ref DamageSpecifier damage, SpecialComponent special, EntityUid? weapon)
+    private bool TryApplyLuckCritical(EntityUid user, ref DamageSpecifier damage, SpecialComponent special, EntityUid? weapon = null)
     {
         var chance = GetLuckCriticalChance(user, special, weapon);
 
@@ -88,23 +89,14 @@ public sealed class SpecialCombatSystem : EntitySystem
     {
         var tuning = _special.GetTuning();
 
-        // Hitscan callers can omit the weapon if they want the generic Luck curve.
-        if (weapon == null)
-            return _special.GetLuckRollChance(user, 0f, tuning.LuckCriticalChancePerPoint, special);
-
-        // Single-shot weapons get the full configured chance. Magazine-fed weapons
-        // divide that chance by capacity so expected crits per reload stay similar.
+        // Every hit rolls the full configured chance; magazine-fed weapons no
+        // longer divide crit chance by ammo capacity.
         var delta = _special.GetCurvedEffectDelta(user, SpecialStat.Luck, special);
-        var ammoCapacity = GetWeaponAmmoCapacity(weapon.Value);
-        var singleShotChance = tuning.LuckSingleShotCriticalChanceAtTen * delta / SharedSpecialSystem.GetCurvedEffectDelta(SpecialProfile.Maximum);
-        return Math.Clamp(singleShotChance / ammoCapacity, 0f, 1f);
-    }
+        var shotChance = tuning.LuckSingleShotCriticalChanceAtTen * delta / SharedSpecialSystem.GetCurvedEffectDelta(SpecialProfile.Maximum);
 
-    private int GetWeaponAmmoCapacity(EntityUid weapon)
-    {
-        var ammo = new GetAmmoCountEvent();
-        RaiseLocalEvent(weapon, ref ammo, false);
+        if (weapon != null && HasComp<RevolverAmmoProviderComponent>(weapon.Value))
+            shotChance *= 2f;
 
-        return Math.Max(1, ammo.Capacity);
+        return Math.Clamp(shotChance, 0f, 1f);
     }
 }

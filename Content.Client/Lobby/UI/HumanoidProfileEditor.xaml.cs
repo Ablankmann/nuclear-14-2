@@ -21,6 +21,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared._Misfits.Special;
+using Content.Shared._Misfits.Special.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
@@ -54,6 +55,7 @@ namespace Content.Client.Lobby.UI
     public sealed partial class HumanoidProfileEditor : BoxContainer
     {
         private const string LockedSpecies = "SuperMutant";
+        private const string SpecialTuningPrototypeId = "MisfitsSpecialTuning";
 
         private readonly IConfigurationManager _cfgManager;
         private readonly IEntityManager _entManager;
@@ -2450,15 +2452,242 @@ namespace Content.Client.Lobby.UI
             topRow.AddChild(plusButton);
 
             root.AddChild(topRow);
-            root.AddChild(new Label
+            var description = new Label
             {
                 Text = Loc.GetString(GetSpecialDescriptionLoc(stat)),
                 Modulate = Color.FromHex("#AAAAAA"),
                 HorizontalExpand = true,
-            });
+            };
+
+            var currentEffect = new RichTextLabel
+            {
+                HorizontalExpand = true,
+                Modulate = Color.FromHex("#D6D6D6"),
+            };
+            currentEffect.SetMessage($"Current: {GetSpecialEffectDetails(stat, value)}");
+
+            var changePreview = new RichTextLabel
+            {
+                HorizontalExpand = true,
+            };
+            changePreview.SetMarkup(GetSpecialChangePreview(stat, value));
+
+            root.AddChild(description);
+            root.AddChild(currentEffect);
+            root.AddChild(changePreview);
 
             panel.AddChild(root);
             return panel;
+        }
+
+        private string GetSpecialChangePreview(SpecialStat stat, int value)
+        {
+            var lower = value > SpecialProfile.Minimum
+                ? $"Lower to {value - 1}: {GetSpecialEffectDetails(stat, value - 1)}"
+                : "Lower: already at minimum";
+
+            var raise = value < SpecialProfile.Maximum
+                ? $"Raise to {value + 1}: {GetSpecialEffectDetails(stat, value + 1)}"
+                : "Raise: already at maximum";
+
+            return $"[color=#E05A5A]{FormattedMessage.EscapeText(lower)}[/color]\n" +
+                   $"[color=#5A9EE0]{FormattedMessage.EscapeText(raise)}[/color]";
+        }
+
+        private string GetSpecialEffectDetails(SpecialStat stat, int value)
+        {
+            var tuning = GetSpecialTuning();
+
+            return stat switch
+            {
+                SpecialStat.Strength => GetStrengthEffectDetails(value, tuning),
+                SpecialStat.Perception => GetPerceptionEffectDetails(value, tuning),
+                SpecialStat.Endurance => GetEnduranceEffectDetails(value, tuning),
+                SpecialStat.Charisma => GetCharismaEffectDetails(value),
+                SpecialStat.Intelligence => GetIntelligenceEffectDetails(value, tuning),
+                SpecialStat.Agility => GetAgilityEffectDetails(value, tuning),
+                SpecialStat.Luck => GetLuckEffectDetails(value, tuning),
+                _ => "Neutral baseline.",
+            };
+        }
+
+        private SpecialTuningPrototype GetSpecialTuning()
+        {
+            return _prototypeManager.TryIndex<SpecialTuningPrototype>(SpecialTuningPrototypeId, out var tuning)
+                ? tuning
+                : SpecialTuningPrototype.Fallback;
+        }
+
+        private static string GetStrengthEffectDetails(int value, SpecialTuningPrototype tuning)
+        {
+            var delta = SharedSpecialSystem.GetCurvedEffectDelta(value);
+            var melee = delta * tuning.StrengthMeleeDamageMultiplierPerPoint;
+            var carry = SharedSpecialSystem.GetCurvedEffectScale(
+                delta,
+                -tuning.StrengthCarryPullSpeedPenaltyAtOne,
+                tuning.StrengthCarryPullSpeedBonusAtTen);
+            var heavyGun = SharedSpecialSystem.GetCurvedEffectScale(
+                delta,
+                tuning.StrengthHeavyGunPenaltyAtOne,
+                -tuning.StrengthHeavyGunReductionAtTen);
+
+            return $"melee damage {FormatSignedPercent(melee)}, carry/pull speed {FormatSignedPercent(carry)}, heavy gun spread/recoil {FormatSignedPercent(heavyGun)}.";
+        }
+
+        private static string GetPerceptionEffectDetails(int value, SpecialTuningPrototype tuning)
+        {
+            var delta = SharedSpecialSystem.GetCurvedEffectDelta(value);
+            var spread = SharedSpecialSystem.GetCurvedEffectScale(
+                delta,
+                tuning.PerceptionSpreadPenaltyAtOne,
+                -tuning.PerceptionSpreadReductionAtTen);
+            var fireDelay = SharedSpecialSystem.GetCurvedEffectScale(
+                delta,
+                tuning.PerceptionFireDelayPenaltyAtOne,
+                -tuning.PerceptionFireDelayReductionAtTen);
+
+            return $"gun spread/recoil {FormatSignedPercent(spread)}, gun fire delay {FormatSignedPercent(fireDelay)}.";
+        }
+
+        private static string GetEnduranceEffectDetails(int value, SpecialTuningPrototype tuning)
+        {
+            var delta = SharedSpecialSystem.GetCurvedEffectDelta(value);
+            var health = SharedSpecialSystem.GetCurvedEffectScale(
+                delta,
+                -tuning.EnduranceHealthPenaltyAtOne,
+                tuning.EnduranceHealthBonusAtTen);
+            var needs = SharedSpecialSystem.GetCurvedEffectScale(
+                delta,
+                tuning.EnduranceNeedDecayPenaltyAtOne,
+                -tuning.EnduranceNeedDecayReductionAtTen);
+            var stamina = SharedSpecialSystem.GetCurvedEffectScale(
+                delta,
+                -tuning.EnduranceStaminaRecoveryPenaltyAtOne,
+                tuning.EnduranceStaminaRecoveryBonusAtTen);
+            var toxin = SharedSpecialSystem.GetCurvedEffectScale(
+                delta,
+                tuning.EnduranceToxinDamagePenaltyAtOne,
+                -tuning.EnduranceToxinDamageReductionAtTen);
+
+            return $"health thresholds {FormatSignedNumber(health)}, hunger/thirst decay {FormatSignedPercent(needs)}, stamina recovery {FormatSignedPercent(stamina)}, poison/rad damage {FormatSignedPercent(toxin)}.";
+        }
+
+        private static string GetCharismaEffectDetails(int value)
+        {
+            var loadout = SharedSpecialSystem.GetCharismaLoadoutPointModifier(value);
+            var social = value switch
+            {
+                <= 2 => "awkward examine text and speech quirks",
+                < 5 => "awkward examine text",
+                >= 7 => "larger chat font",
+                _ => "no social penalty",
+            };
+
+            return $"loadout points {FormatSignedInt(loadout)}, {social}.";
+        }
+
+        private static string GetIntelligenceEffectDetails(int value, SpecialTuningPrototype tuning)
+        {
+            var handCraft = value <= SpecialProfile.Minimum
+                ? "hand crafting blocked"
+                : $"hand crafting delay {FormatSignedPercent(GetIntelligenceConstructionDelayModifier(value))}";
+            var lathe = value <= 3
+                ? "lathes locked"
+                : $"lathe production time {FormatSignedPercent(GetIntelligenceLatheTimeModifier(value, tuning))}";
+            var surgery = $"surgery speed {FormatSignedPercent((value - SpecialProfile.DefaultValue) * 0.1f)}";
+            var extra = value switch
+            {
+                <= 1 => ", low-intelligence accent",
+                >= 8 => ", detailed chemical scans",
+                _ => string.Empty,
+            };
+
+            return $"{handCraft}, {lathe}, {surgery}{extra}.";
+        }
+
+        private static string GetAgilityEffectDetails(int value, SpecialTuningPrototype tuning)
+        {
+            var delta = SharedSpecialSystem.GetCurvedEffectDelta(value);
+            var move = SharedSpecialSystem.GetCurvedEffectScale(
+                delta,
+                -tuning.AgilityMovementSpeedPenaltyAtOne,
+                tuning.AgilityMovementSpeedBonusAtTen);
+            var actionDelay = SharedSpecialSystem.GetCurvedEffectScale(
+                delta,
+                tuning.AgilityActionDelayPenaltyAtOne,
+                -tuning.AgilityActionDelayReductionAtTen);
+
+            return $"movement speed {FormatSignedPercent(move)}, melee attack delay {FormatSignedPercent(actionDelay)}.";
+        }
+
+        private static string GetLuckEffectDetails(int value, SpecialTuningPrototype tuning)
+        {
+            var delta = SharedSpecialSystem.GetCurvedEffectDelta(value);
+            var maxDelta = SharedSpecialSystem.GetCurvedEffectDelta(SpecialProfile.Maximum);
+            var shotCrit = Math.Clamp(tuning.LuckSingleShotCriticalChanceAtTen * delta / maxDelta, 0f, 1f);
+            var luckyLoot = Math.Clamp(delta * tuning.LuckLootChancePerPoint, 0f, 1f);
+            var clumsy = value switch
+            {
+                1 => 0.50f,
+                2 => 0.05f,
+                3 => 0.03f,
+                4 => 0.01f,
+                _ => 0f,
+            };
+
+            return $"crit chance per hit {FormatUnsignedPercent(shotCrit)}, lucky loot chance {FormatUnsignedPercent(luckyLoot)}, clumsy chance {FormatUnsignedPercent(clumsy)}.";
+        }
+
+        private static float GetIntelligenceConstructionDelayModifier(int value)
+        {
+            var multiplier = value >= SpecialProfile.DefaultValue
+                ? 1f - (value - SpecialProfile.DefaultValue) * 0.1f
+                : 1f + (SpecialProfile.DefaultValue - value) * 0.15f;
+
+            return MathF.Max(0.1f, multiplier) - 1f;
+        }
+
+        private static float GetIntelligenceLatheTimeModifier(int value, SpecialTuningPrototype tuning)
+        {
+            var minMultiplier = Math.Clamp(tuning.IntelligenceLatheMinimumTimeMultiplierAtTen, 0.1f, 1f);
+            var multiplier = value >= SpecialProfile.DefaultValue
+                ? 1f - (1f - minMultiplier) * (value - SpecialProfile.DefaultValue) /
+                    (SpecialProfile.Maximum - SpecialProfile.DefaultValue)
+                : 1f + (SpecialProfile.DefaultValue - value) * 0.15f;
+
+            return MathF.Max(0.1f, multiplier) - 1f;
+        }
+
+        private static string FormatSignedPercent(float value)
+        {
+            if (MathF.Abs(value) < 0.0005f)
+                return "0%";
+
+            return value > 0f
+                ? $"+{value * 100f:0.#}%"
+                : $"{value * 100f:0.#}%";
+        }
+
+        private static string FormatUnsignedPercent(float value)
+        {
+            return $"{MathF.Max(0f, value) * 100f:0.#}%";
+        }
+
+        private static string FormatSignedNumber(float value)
+        {
+            if (MathF.Abs(value) < 0.05f)
+                return "0";
+
+            return value > 0f
+                ? $"+{value:0.#}"
+                : $"{value:0.#}";
+        }
+
+        private static string FormatSignedInt(int value)
+        {
+            return value > 0
+                ? $"+{value}"
+                : value.ToString();
         }
 
         private void SetSpecialValue(SpecialStat stat, int value)
