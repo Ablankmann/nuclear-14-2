@@ -22,6 +22,7 @@
   charismaTradePenaltyAtOne: 0.10
   charismaTradeBonusAtTen: 0.10
   intelligenceLatheMinimumTimeMultiplierAtTen: 0.50
+  intelligenceLatheMaterialDiscountAtTen: 0.25
   agilityMovementSpeedPenaltyAtOne: 0.075
   agilityMovementSpeedBonusAtTen: 0.075
   agilityActionDelayPenaltyAtOne: 0.08
@@ -29,4 +30,5 @@
   luckCriticalChancePerPoint: 0.005
   luckSingleShotCriticalChanceAtTen: 0.25
   luckCriticalDamageMultiplier: 1.5
+  luckUnluckyDamageMultiplier: 0.5
   luckLootChancePerPoint: 0.025

@@ -1,11 +1,14 @@
 using Content.Shared._Misfits.Special;
 using Content.Shared._Misfits.Special.Components;
 using Content.Shared.Damage;
+using Content.Shared.Item;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Wieldable;
+using Content.Shared.Wieldable.Components;
 using Robust.Shared.Random;
 
 namespace Content.Server._Misfits.Special;
@@ -19,9 +22,34 @@ public sealed class SpecialCombatSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<ItemComponent, GetMeleeDamageEvent>(OnGetItemMeleeDamage, after: [typeof(WieldableSystem)]);
+        SubscribeLocalEvent<WieldableComponent, GetMeleeDamageEvent>(OnWieldableMeleeDamage, after: [typeof(WieldableSystem)]);
         SubscribeLocalEvent<MeleeWeaponComponent, MeleeHitEvent>(OnMeleeHit);
         SubscribeLocalEvent<ProjectileComponent, ProjectileHitEvent>(OnProjectileHit);
         SubscribeLocalEvent<SpecialComponent, SpecialModifyHitscanDamageEvent>(OnModifyHitscanDamage);
+    }
+
+    private void OnGetItemMeleeDamage(EntityUid uid, ItemComponent component, ref GetMeleeDamageEvent args)
+    {
+        if (HasComp<WieldableComponent>(uid))
+            return;
+
+        ApplyStrengthMeleeDamage(args.User, ref args);
+    }
+
+    private void OnWieldableMeleeDamage(EntityUid uid, WieldableComponent component, ref GetMeleeDamageEvent args)
+    {
+        ApplyStrengthMeleeDamage(args.User, ref args);
+    }
+
+    private void ApplyStrengthMeleeDamage(EntityUid user, ref GetMeleeDamageEvent args)
+    {
+        if (!TryComp<SpecialComponent>(user, out var special))
+            return;
+
+        var damage = args.Damage;
+        ApplyStrengthMeleeModifier(user, ref damage, special);
+        args.Damage = damage;
     }
 
     private void OnMeleeHit(EntityUid uid, MeleeWeaponComponent component, MeleeHitEvent args)
@@ -33,10 +61,9 @@ public sealed class SpecialCombatSystem : EntitySystem
             return;
 
         var damage = args.BaseDamage;
-        ApplyStrengthMeleeModifier(args.User, ref damage, special);
 
-        // Melee weapons use the same Luck crit curve as ranged weapons.
-        TryApplyLuckCritical(args.User, ref damage, special);
+        // Melee weapons use the same Luck outcome curve as ranged weapons.
+        TryApplyLuckDamageOutcome(args.User, ref damage, special);
 
         // Preserve the original event damage and apply only the SPECIAL delta.
         args.BonusDamage += damage - args.BaseDamage;
@@ -60,28 +87,35 @@ public sealed class SpecialCombatSystem : EntitySystem
             !TryComp<SpecialComponent>(args.Shooter.Value, out var special))
             return;
 
-        // Projectile damage is mutable on the hit event, so write back only on crit.
+        // Projectile damage is mutable on the hit event, so write back only on Luck outcomes.
         var damage = args.Damage;
-        if (TryApplyLuckCritical(args.Shooter.Value, ref damage, special, ent.Comp.Weapon))
+        if (TryApplyLuckDamageOutcome(args.Shooter.Value, ref damage, special, ent.Comp.Weapon))
             args.Damage = damage;
     }
 
     private void OnModifyHitscanDamage(Entity<SpecialComponent> ent, ref SpecialModifyHitscanDamageEvent args)
     {
         var damage = args.Damage;
-        if (TryApplyLuckCritical(ent.Owner, ref damage, ent.Comp, args.Weapon))
+        if (TryApplyLuckDamageOutcome(ent.Owner, ref damage, ent.Comp, args.Weapon))
             args.Damage = damage;
     }
 
-    private bool TryApplyLuckCritical(EntityUid user, ref DamageSpecifier damage, SpecialComponent special, EntityUid? weapon = null)
+    private bool TryApplyLuckDamageOutcome(EntityUid user, ref DamageSpecifier damage, SpecialComponent special, EntityUid? weapon = null)
     {
-        var chance = GetLuckCriticalChance(user, special, weapon);
+        var tuning = _special.GetTuning();
+        var critChance = GetLuckCriticalChance(user, special, weapon);
 
-        if (chance <= 0f || !_random.Prob(chance))
+        if (critChance > 0f && _random.Prob(critChance))
+        {
+            damage *= tuning.LuckCriticalDamageMultiplier;
+            return true;
+        }
+
+        var unluckyChance = GetLuckUnluckyChance(user, special);
+        if (unluckyChance <= 0f || !_random.Prob(unluckyChance))
             return false;
 
-        var tuning = _special.GetTuning();
-        damage *= tuning.LuckCriticalDamageMultiplier;
+        damage *= Math.Clamp(tuning.LuckUnluckyDamageMultiplier, 0f, 1f);
         return true;
     }
 
@@ -98,5 +132,16 @@ public sealed class SpecialCombatSystem : EntitySystem
             shotChance *= 2f;
 
         return Math.Clamp(shotChance, 0f, 1f);
+    }
+
+    private float GetLuckUnluckyChance(EntityUid user, SpecialComponent special)
+    {
+        return _special.GetEffective(user, SpecialStat.Luck, special) switch
+        {
+            2 => 0.05f,
+            3 => 0.03f,
+            4 => 0.01f,
+            _ => 0f,
+        };
     }
 }

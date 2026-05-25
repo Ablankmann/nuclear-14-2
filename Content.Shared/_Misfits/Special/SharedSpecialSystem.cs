@@ -206,6 +206,55 @@ public sealed class SharedSpecialSystem : EntitySystem
         return (int) Math.Round(GetCurvedEffectDelta(charisma) * 2f, MidpointRounding.AwayFromZero);
     }
 
+    /// <summary>
+    /// Returns the Intelligence speed multiplier used by medical actions with do-after timers.
+    /// </summary>
+    public float GetIntelligenceMedicalActionSpeed(EntityUid uid, SpecialComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false))
+            return 1f;
+
+        return GetIntelligenceMedicalActionSpeed(GetEffective(uid, SpecialStat.Intelligence, component));
+    }
+
+    public static float GetIntelligenceMedicalActionSpeed(int intelligence)
+    {
+        return MathF.Max(0.1f, 1f + (intelligence - SpecialProfile.DefaultValue) * 0.1f);
+    }
+
+    /// <summary>
+    /// Applies the Intelligence medical speed multiplier to a timed medical action.
+    /// </summary>
+    public TimeSpan GetIntelligenceMedicalActionDelay(EntityUid uid, TimeSpan baseDelay, SpecialComponent? component = null)
+    {
+        return baseDelay / GetIntelligenceMedicalActionSpeed(uid, component);
+    }
+
+    /// <summary>
+    /// Applies the Intelligence lathe material discount to an existing material-use multiplier.
+    /// The discount only rewards above-average Intelligence; low Intelligence is already gated elsewhere.
+    /// </summary>
+    public float GetIntelligenceLatheMaterialUseMultiplier(EntityUid uid, float baseMultiplier, SpecialComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false))
+            return baseMultiplier;
+
+        var tuning = GetTuning();
+        return GetIntelligenceLatheMaterialUseMultiplier(
+            GetEffective(uid, SpecialStat.Intelligence, component),
+            baseMultiplier,
+            tuning.IntelligenceLatheMaterialDiscountAtTen);
+    }
+
+    public static float GetIntelligenceLatheMaterialUseMultiplier(int intelligence, float baseMultiplier, float discountAtTen)
+    {
+        var delta = MathF.Max(0f, GetCurvedEffectDelta(intelligence));
+        var maxDelta = GetCurvedEffectDelta(SpecialProfile.Maximum);
+        var discount = Math.Clamp(discountAtTen, 0f, 0.5f) * delta / maxDelta;
+
+        return MathF.Max(0.1f, baseMultiplier * (1f - discount));
+    }
+
     public int GetCharismaChatFontSize(EntityUid uid, int baseFontSize, SpecialComponent? component = null)
     {
         return GetEffective(uid, SpecialStat.Charisma, component) >= 7

@@ -1,5 +1,6 @@
 using Content.Shared._Misfits.Special;
 using Content.Shared._Misfits.Special.Components;
+using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 
 namespace Content.Shared._Misfits.SpecialStats;
@@ -15,10 +16,10 @@ public sealed class SpecialAgilitySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<GetMeleeAttackRateEvent>(OnMeleeAttackRate);
+        SubscribeLocalEvent<MeleeWeaponComponent, GetMeleeAttackRateEvent>(OnMeleeAttackRate);
     }
 
-    private void OnMeleeAttackRate(ref GetMeleeAttackRateEvent args)
+    private void OnMeleeAttackRate(EntityUid uid, MeleeWeaponComponent component, ref GetMeleeAttackRateEvent args)
     {
         if (!TryComp<SpecialComponent>(args.User, out var special))
             return;

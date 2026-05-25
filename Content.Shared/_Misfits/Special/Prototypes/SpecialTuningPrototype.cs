@@ -92,6 +92,9 @@ public sealed partial class SpecialTuningPrototype : IPrototype
     [DataField("intelligenceLatheMinimumTimeMultiplierAtTen")]
     public float IntelligenceLatheMinimumTimeMultiplierAtTen = 0.50f;
 
+    [DataField("intelligenceLatheMaterialDiscountAtTen")]
+    public float IntelligenceLatheMaterialDiscountAtTen = 0.25f;
+
     // Agility: movement and general action speed.
     [DataField("agilityMovementSpeedMultiplierPerPoint")]
     public float AgilityMovementSpeedMultiplierPerPoint = 0.004f;
@@ -117,6 +120,9 @@ public sealed partial class SpecialTuningPrototype : IPrototype
 
     [DataField("luckCriticalDamageMultiplier")]
     public float LuckCriticalDamageMultiplier = 1.5f;
+
+    [DataField("luckUnluckyDamageMultiplier")]
+    public float LuckUnluckyDamageMultiplier = 0.5f;
 
     [DataField("luckLootChancePerPoint")]
     public float LuckLootChancePerPoint = 0.025f;

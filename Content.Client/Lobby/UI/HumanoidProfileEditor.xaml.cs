@@ -2593,8 +2593,8 @@ namespace Content.Client.Lobby.UI
                 : $"hand crafting delay {FormatSignedPercent(GetIntelligenceConstructionDelayModifier(value))}";
             var lathe = value <= 3
                 ? "lathes locked"
-                : $"lathe production time {FormatSignedPercent(GetIntelligenceLatheTimeModifier(value, tuning))}";
-            var surgery = $"surgery speed {FormatSignedPercent((value - SpecialProfile.DefaultValue) * 0.1f)}";
+                : $"lathe production time {FormatSignedPercent(GetIntelligenceLatheTimeModifier(value, tuning))}, lathe material cost {FormatSignedPercent(GetIntelligenceLatheMaterialCostModifier(value, tuning))}";
+            var medical = $"medical action speed {FormatSignedPercent(SharedSpecialSystem.GetIntelligenceMedicalActionSpeed(value) - 1f)} (CPR, healing, surgery, scans)";
             var extra = value switch
             {
                 <= 1 => ", low-intelligence accent",
@@ -2602,7 +2602,7 @@ namespace Content.Client.Lobby.UI
                 _ => string.Empty,
             };
 
-            return $"{handCraft}, {lathe}, {surgery}{extra}.";
+            return $"{handCraft}, {lathe}, {medical}{extra}.";
         }
 
         private static string GetAgilityEffectDetails(int value, SpecialTuningPrototype tuning)
@@ -2625,6 +2625,7 @@ namespace Content.Client.Lobby.UI
             var delta = SharedSpecialSystem.GetCurvedEffectDelta(value);
             var maxDelta = SharedSpecialSystem.GetCurvedEffectDelta(SpecialProfile.Maximum);
             var shotCrit = Math.Clamp(tuning.LuckSingleShotCriticalChanceAtTen * delta / maxDelta, 0f, 1f);
+            var revolverCrit = Math.Clamp(shotCrit * 2f, 0f, 1f);
             var luckyLoot = Math.Clamp(delta * tuning.LuckLootChancePerPoint, 0f, 1f);
             var clumsy = value switch
             {
@@ -2634,8 +2635,17 @@ namespace Content.Client.Lobby.UI
                 4 => 0.01f,
                 _ => 0f,
             };
+            var unlucky = value switch
+            {
+                2 => 0.05f,
+                3 => 0.03f,
+                4 => 0.01f,
+                _ => 0f,
+            };
 
-            return $"crit chance per hit {FormatUnsignedPercent(shotCrit)}, lucky loot chance {FormatUnsignedPercent(luckyLoot)}, clumsy chance {FormatUnsignedPercent(clumsy)}.";
+            var unluckyDamage = 1f - Math.Clamp(tuning.LuckUnluckyDamageMultiplier, 0f, 1f);
+
+            return $"crit chance per hit {FormatUnsignedPercent(shotCrit)} (revolvers {FormatUnsignedPercent(revolverCrit)}), unlucky hit chance {FormatUnsignedPercent(unlucky)} for {FormatSignedPercent(-unluckyDamage)} damage, lucky loot chance {FormatUnsignedPercent(luckyLoot)}, clumsy chance {FormatUnsignedPercent(clumsy)}.";
         }
 
         private static float GetIntelligenceConstructionDelayModifier(int value)
@@ -2656,6 +2666,14 @@ namespace Content.Client.Lobby.UI
                 : 1f + (SpecialProfile.DefaultValue - value) * 0.15f;
 
             return MathF.Max(0.1f, multiplier) - 1f;
+        }
+
+        private static float GetIntelligenceLatheMaterialCostModifier(int value, SpecialTuningPrototype tuning)
+        {
+            return SharedSpecialSystem.GetIntelligenceLatheMaterialUseMultiplier(
+                value,
+                1f,
+                tuning.IntelligenceLatheMaterialDiscountAtTen) - 1f;
         }
 
         private static string FormatSignedPercent(float value)

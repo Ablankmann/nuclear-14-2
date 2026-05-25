@@ -221,13 +221,15 @@ namespace Content.Server.Lathe
             if (!Resolve(uid, ref component))
                 return false;
 
-            if (!CanProduce(uid, recipe, 1, component))
+            var materialUseMultiplier = GetIntelligenceLatheMaterialUseMultiplier(actor, component.MaterialUseMultiplier);
+
+            if (!CanProduce(uid, recipe, 1, materialUseMultiplier, component))
                 return false;
 
             foreach (var (mat, amount) in recipe.Materials)
             {
                 var adjustedAmount = recipe.ApplyMaterialDiscount
-                    ? (int) (-amount * component.MaterialUseMultiplier)
+                    ? -SharedLatheSystem.AdjustMaterial(amount, true, materialUseMultiplier)
                     : -amount;
 
                 if (!_materialStorage.TryConsumeAvailableMaterial(uid, mat, -adjustedAmount))
@@ -549,12 +551,13 @@ namespace Content.Server.Lathe
                         if (i == 0)
                         {
                             var hasRecipe = HasRecipe(uid, recipe, component);
-                            var canProduce = CanProduce(uid, recipe, 1, component);
+                            var materialUseMultiplier = GetIntelligenceLatheMaterialUseMultiplier(args.Actor, component.MaterialUseMultiplier);
+                            var canProduce = CanProduce(uid, recipe, 1, materialUseMultiplier, component);
                             var missing = string.Join(", ",
                                 recipe.Materials.Select(m =>
                                 {
                                     var needed = recipe.ApplyMaterialDiscount
-                                        ? (int) MathF.Ceiling(m.Value * component.MaterialUseMultiplier)
+                                        ? SharedLatheSystem.AdjustMaterial(m.Value, true, materialUseMultiplier)
                                         : m.Value;
                                     var available = _materialStorage.GetAvailableMaterialAmount(uid, m.Key);
                                     var shortfall = Math.Max(0, needed - available);
@@ -609,6 +612,14 @@ namespace Content.Server.Lathe
                 : 1f + (SpecialProfile.DefaultValue - intelligence) * 0.15f;
 
             return baseTime * MathF.Max(0.1f, multiplier);
+        }
+
+        private float GetIntelligenceLatheMaterialUseMultiplier(EntityUid? user, float baseMultiplier)
+        {
+            if (user == null || !TryComp<SpecialComponent>(user.Value, out var special))
+                return baseMultiplier;
+
+            return _special.GetIntelligenceLatheMaterialUseMultiplier(user.Value, baseMultiplier, special);
         }
 
         /// <summary>
