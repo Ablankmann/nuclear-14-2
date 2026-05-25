@@ -115,7 +115,7 @@
   reactants:
     Gold:
       amount: 10
-    FrostOil:
+    Frostoil:
       amount: 5
   effects:
   - !type:CreateEntityReactionEffect
@@ -128,7 +128,7 @@
   reactants:
     Silver:
       amount: 10
-    FrostOil:
+    Frostoil:
       amount: 5
   effects:
   - !type:CreateEntityReactionEffect
