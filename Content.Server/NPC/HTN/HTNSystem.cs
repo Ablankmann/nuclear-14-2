@@ -21,6 +21,7 @@ using Content.Server.Worldgen; // Corvax
 using Content.Server.Worldgen.Components; // Corvax
 using Content.Server.Worldgen.Systems; // Corvax
 using Robust.Server.GameObjects; // Corvax
+
 namespace Content.Server.NPC.HTN;
 
 public sealed class HTNSystem : EntitySystem

@@ -65,7 +65,6 @@ public sealed partial class TraitSpawnEntity : TraitFunction
             }
             else
             {
-                // Charisma too low leave the ghost-role spawner for a ghost player to take.
                 var ownerComp = entityManager.EnsureComponent<MisfitsPetSpawnerOwnerComponent>(spawner);
                 ownerComp.Owner = uid;
             }
