@@ -470,6 +470,7 @@
     resistance: 10
   - type: SpriteFade
   - type: DoorSignalControl
+  - type: BlockNetworkConfigurator
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice
