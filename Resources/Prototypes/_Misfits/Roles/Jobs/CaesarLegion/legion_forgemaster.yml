@@ -27,7 +27,7 @@
   supervisors: job-name-caesar-legion-supervisors
   canBeAntag: false
   accessGroups:
-  - CaesarLegionForgemaster
+  - CaesarLegionDean
   special:
   - !type:AddComponentSpecial
     components:
@@ -40,7 +40,7 @@
     traits: [ LanguageLatin ]
 
 - type: startingGear
-  id: CeasarLegionForgeMasterGear
+  id: CaesarLegionForgeMasterGear
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     ears: N14ClothingHeadsetLegion
