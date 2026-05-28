@@ -40,7 +40,7 @@
 
 - type: entity
   parent: N14DoorCell
-  id: N14DoorCellSlantedLocked80s
+  id: N14DoorCellLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
