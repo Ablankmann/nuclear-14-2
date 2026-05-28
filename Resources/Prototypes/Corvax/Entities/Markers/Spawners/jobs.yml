@@ -85,6 +85,18 @@
       - state: dean
 
 - type: entity
+  id: N14SpawnPointForgemaster
+  parent: N14SpawnPointCenturion
+  name: legion forgemaster
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionForgemaster
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
   id: N14SpawnPointLegionnaireVeteran
   parent: N14SpawnPointCenturion
   name: legion veteran legionary

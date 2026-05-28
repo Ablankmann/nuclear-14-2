@@ -75,6 +75,7 @@
   # Junior Officers (2LT/1LT pins) — repurposed from NCRLT
   - NCRExecutiveOfficer  # NCR Executive Officer   | _Misfits/Roles/Jobs/NCR/ncr_lieutenant.yml
   - NCRPlatoonLeader     # NCR Platoon Leader      | _Misfits/Roles/Jobs/NCR/ncr_platoon_leader.yml
+  - NCRRO                # NCR Requisition Officer | _Misfits/Roles/Jobs/NCR/ncr_requisition_officer.yml
   # NCOs — 4 map slots, one job (CPL/SGT/SSG/SFC pins)
   - NCRNCO               # NCR NCO (4 slots)       | _Misfits/Roles/Jobs/NCR/ncr_sergeant.yml
   # Specialists (PV2/PFC/SPC pins)
@@ -211,6 +212,7 @@
   - CaesarLegionVeteranDecanus  # Veteran Decanus     | _Misfits/Roles/Jobs/CaesarLegion/legion_veteran_decanus.yml # #Misfits Add
   - CaesarLegionPrimeDecanus    # Prime Decanus       | _Misfits/Roles/Jobs/CaesarLegion/legion_prime_decanus.yml # #Misfits Add
   - CaesarLegionDean            # Decanus             | _Misfits/Roles/Jobs/CaesarLegion/legion_decanus.yml # #Misfits Add
+  - CaesarLegionForgemaster     # Forgemaster         | _Misfits/Roles/Jobs/CaesarLegion/legion_forgemaster.yml # #Misfits Add
   # Warriors
   - CaesarLegionLegionnaireVeteran  # Veteran Legionnaire | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_veteran.yml # #Misfits Add
   - CaesarLegionLegionnaireWarrior  # Legionnaire Warrior | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_warrior.yml # #Misfits Add

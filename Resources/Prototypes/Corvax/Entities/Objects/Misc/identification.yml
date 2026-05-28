@@ -232,6 +232,25 @@
 
 - type: entity
   parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalForgemaster
+  name: legion forgemaster medallion
+  description: "A Silver Medallion bearing the symbol of the Legion Forgemaster."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-3
+  - type: IdCard # #Misfits Add - display "medallion" instead of default "ID card"
+    nameLocId: n14-id-medallion-name
+    fullNameLocId: n14-id-medallion-full-name
+  - type: PresetIdCard
+    job: CaesarLegionForgemaster
+  #Misfits Add - IdCardLegion enables this medallion to appear on the Centurion's tactical map terminal
+  - type: Tag
+    tags:
+    - IdCardLegion
+
+- type: entity
+  parent: N14IDPassportBlank
   id: N14IDLegionaryMedalExplorer
   name: legion explorer medallion
   description: "A medal worn by a Legion Explorer."

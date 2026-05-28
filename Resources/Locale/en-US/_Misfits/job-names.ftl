@@ -18,6 +18,9 @@ job-description-ncr-nco = You lead a squad of NCR troopers, responsible for a fi
 job-name-ncr-weapon-specialist = NCR Weapon Specialist
 job-description-ncr-weapon-specialist = You are a weapons-qualified specialist of the NCR. Your focus is firepower and combat effectiveness — not command. Your rank tracks PV2 through SPC as you accumulate experience.
 
+job-name-ncr-requisition-officer = NCR Requisition Officer
+job-description-ncr-requisition-officer = You are a Quartermaster and Requisition Officer of NCR, maintain the armies' equipment and supervise the allocation of its resources.
+
 # #Misfits Add - Enclave job locale (expanded 8-role hierarchy). Reformer is admin-only apex role.
 job-name-enclave-reformer = The Reformer
 job-description-enclave-reformer = You are the Enclave's supreme authority on the field — its Reformer. Shape the cell's doctrine, judge its members, and determine its future. Answerable only to Eden.
@@ -140,3 +143,5 @@ undecided-loadout-category-misfits-pal-wattz-description =
     Includes 1 Bozar, 1 LMG magazine, 1 12.7mm pistol,
     2 12.7mm pistol magazines, 1 roll of gauze, 1 stimpak,
     and 1 K ration MRE.
+
+
