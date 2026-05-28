@@ -6007,3 +6007,10 @@ Entries:
   id: 5975
   time: '2026-05-28T18:54:06.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/624
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Increased sentry bot HP and mats dropped
+  id: 5976
+  time: '2026-05-28T19:11:23.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/626
