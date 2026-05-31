@@ -6155,3 +6155,12 @@ Entries:
   id: 5991
   time: '2026-05-31T13:50:14.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/646
+- author: pierow
+  changes:
+    - type: Fix
+      message: >-
+        NCR Prisoners no longer have hidden storage (Sorry Peter, this was tough
+        for me as well)
+  id: 5992
+  time: '2026-05-31T13:59:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/648
