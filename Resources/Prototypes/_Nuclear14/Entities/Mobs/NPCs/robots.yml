@@ -483,6 +483,20 @@
       params:
         volume: -3
         maxDistance: 10
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
 
 - type: entity
   parent: N14MobRobotMrHandyClaw
@@ -593,6 +607,20 @@
       params:
         volume: -3
         maxDistance: 10
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
 
 - type: entity
   parent: N14MobRobotHostile
@@ -664,6 +692,20 @@
       params:
         volume: -3
         maxDistance: 10
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
 
 - type: entity
   parent: N14MobRobotHostile
@@ -726,6 +768,20 @@
       params:
         volume: -3
         maxDistance: 12
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
 
 - type: entity
   parent: N14MobRobotHostile
@@ -819,6 +875,20 @@
       params:
         volume: -3
         maxDistance: 12
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
 
 - type: entity
   id: N14SentryBotOverloadLightEmitter
