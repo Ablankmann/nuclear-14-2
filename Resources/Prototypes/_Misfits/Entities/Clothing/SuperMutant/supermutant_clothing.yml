@@ -522,7 +522,7 @@
 # FOTA armor
 
 - type: entity
-  parent: ClothingOuterBase
+  parent: [ClothingOuterBase, AllowSuitStorageClothing]
   id: MisfitsFOTASuperMutantArmoredLabcoat
   name: Supermutant Followers Armored Labcoat
   description: A large Labcoat with a bulletproof vest inside.
