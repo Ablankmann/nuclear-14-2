@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Server.Administration.Logs;
 using Content.Server.Cargo.Components;
+using Content.Server.Cargo.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared._Misfits.Currency.Components;
@@ -42,8 +43,10 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly PricingSystem _pricing = default!;
 
     private static readonly EntProtoId PaperRequisitionInvoice = "N14PaperRequisitionInvoice";
+    private const int CrateResaleMinimum = 10;
 
     private EntityQuery<ChasmComponent> _chasmQuery;
     private EntityQuery<ChasmFallingComponent> _chasmFallingQuery;
@@ -426,7 +429,6 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             foreach (var order in comp.Orders)
             {
                 var crate = SpawnAtPosition(order.Crate, coordinates.Offset(new Vector2(xOffset, yOffset)));
-                EnsureComp<CargoSellBlacklistComponent>(crate);
                 remainingDeliveries--;
 
                 foreach (var prototype in order.Entities)
@@ -484,7 +486,6 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
     {
         var account = GetAccount(elevator.Comp.Group, elevator.Comp.AccountProto);
         var sellEntries = GetSellEntries(elevator.Comp.Group);
-        var coordinates = _transform.GetMoverCoordinates(elevator);
         var entities = _lookup.GetEntitiesIntersecting(elevator);
         var soldAny = false;
         var rewards = 0;
@@ -509,8 +510,10 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
 
             if (TryGetSellEntry(sellEntries, entity, out var sellEntry))
             {
-                rewards += sellEntry.Value;
-                exchanged.AddRange(sellEntry.Exchange);
+                var qty = TryComp(entity, out StackComponent? sellStack) ? sellStack.Count : 1;
+                rewards += sellEntry.Value * qty;
+                for (var i = 0; i < qty; i++)
+                    exchanged.AddRange(sellEntry.Exchange);
                 soldAny = true;
                 QueueDel(entity);
                 continue;
@@ -518,9 +521,10 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
 
             rewards += SubmitInvoices(entity);
 
-            if (TryComp(entity, out RequisitionsCrateComponent? crate))
+            var price = SellValue(entity);
+            if (price > 0)
             {
-                rewards += crate.Reward;
+                rewards += price;
                 soldAny = true;
             }
 
@@ -531,7 +535,7 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
 
         foreach (var proto in exchanged)
         {
-            SpawnAtPosition(proto, coordinates);
+            CreateSpecialDelivery(proto);
         }
 
         if (rewards > 0)
@@ -567,11 +571,21 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             if (account.Comp.CompletedBounties.Contains(bounty.Id))
                 continue;
 
-            if (delivered.GetValueOrDefault(bounty.Item.Id) < bounty.Amount)
+            var delivCount = delivered.GetValueOrDefault(bounty.Item.Id);
+            if (delivCount <= 0)
                 continue;
 
-            reward += bounty.Reward;
-            account.Comp.CompletedBounties.Add(bounty.Id);
+            var progress = account.Comp.BountyProgress.GetValueOrDefault(bounty.Id) + delivCount;
+            if (progress >= bounty.Amount)
+            {
+                reward += bounty.Reward;
+                account.Comp.CompletedBounties.Add(bounty.Id);
+                account.Comp.BountyProgress.Remove(bounty.Id);
+            }
+            else
+            {
+                account.Comp.BountyProgress[bounty.Id] = progress;
+            }
         }
 
         return reward;
@@ -593,15 +607,13 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
 
             if (TryGetSellEntry(sellEntries, entity, out var sellEntry))
             {
-                value += sellEntry.Value;
+                var qty = TryComp(entity, out StackComponent? sellStack) ? sellStack.Count : 1;
+                value += sellEntry.Value * qty;
                 count++;
                 continue;
             }
 
-            var entityValue = SubmitInvoices(entity);
-            if (TryComp(entity, out RequisitionsCrateComponent? crate))
-                entityValue += crate.Reward;
-
+            var entityValue = SubmitInvoices(entity) + SellValue(entity);
             if (entityValue <= 0)
                 continue;
 
@@ -610,6 +622,14 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
         }
 
         return value;
+    }
+
+    private int SellValue(EntityUid entity)
+    {
+        if (TryComp(entity, out RequisitionsCrateComponent? crate))
+            return Math.Max(crate.Reward, CrateResaleMinimum);
+
+        return (int) _pricing.GetPrice(entity);
     }
 
     private List<RequisitionsSellEntry> GetSellEntries(string group)
