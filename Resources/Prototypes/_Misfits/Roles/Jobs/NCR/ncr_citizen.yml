@@ -4,7 +4,7 @@
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 1
-  showBorder: false
+  showBorder: true
   overrideConsoleVisibility: true
   canBeAntag: false
   name: job-name-ncr-citizen 
@@ -21,7 +21,7 @@
    # - !type:CharacterOverallTimeRequirement
    #   min: 3600
   startingGear: NCRCitizenGear
-  icon: "JobIconNCRCadet"
+  icon: "JobIconNcrCadet"
   supervisors: job-supervisors-ncr-prisoners
   alwaysUseSpawner: true
   access:
