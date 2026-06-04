@@ -6420,3 +6420,10 @@ Entries:
   id: 6013
   time: '2026-06-03T23:46:57.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/682
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Shaker now spawns in bartender's pocket
+  id: 6014
+  time: '2026-06-04T00:14:37.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/683
