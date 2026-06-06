@@ -14,6 +14,10 @@
   description: job-description-eighties-the-block
   playTimeTracker: EightiesTheBlock
   whitelisted: false
+  access:
+  - 80sHead
+  - 80s
+  - 80sSlave
   requirements:
   - !type:MinPlayersRequirement
     min: 0
@@ -42,6 +46,7 @@
   id: EightiesTheBlockGear
   equipment:
     bandage: NCClothingBandageRaiders
+    id: MisfitsEightiesIDCardHead
     hands: N14ClothingHandsGlovesBlackBiker
     jumpsuit: MisfitsClothingTheBlockPants
     outerClothing: MisfitsClothingOuterTheBlockArmor
@@ -73,6 +78,8 @@
   description: job-description-eighties-cylinders
   playTimeTracker: EightiesCylinders
   whitelisted: false
+  access:
+  - 80s
   requirements:
   - !type:MinPlayersRequirement
     min: 0
@@ -101,6 +108,7 @@
   id: EightiesCylindersGear
   equipment:
     bandage: NCClothingBandageRaiders
+    id: MisfitsEightiesIDCard
     jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer
     outerClothing: MisfitsClothingOuterEightiesArmor
     shoes: N14ClothingShoesRaider
@@ -129,6 +137,8 @@
   description: job-description-eighties-pistons
   playTimeTracker: EightiesPistons
   whitelisted: false
+  access:
+  - 80s
   requirements:
   - !type:MinPlayersRequirement
     min: 0
@@ -157,6 +167,7 @@
   id: EightiesPistonsGear
   equipment:
     bandage: NCClothingBandageRaiders
+    id: MisfitsEightiesIDCard
     jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer
     outerClothing: MisfitsClothingOuterEightiesArmor
     shoes: N14ClothingShoesRaider
@@ -185,6 +196,8 @@
   description: job-description-eighties-oilers
   playTimeTracker: EightiesOilers
   whitelisted: false
+  access:
+  - 80s
   requirements:
   - !type:MinPlayersRequirement
     min: 0
@@ -213,6 +226,7 @@
   id: EightiesOilersGear
   equipment:
     bandage: NCClothingBandageRaiders
+    id: MisfitsEightiesIDCard
     jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer
     outerClothing: MisfitsClothingOuterEightiesArmor
     shoes: N14ClothingShoesRaider
@@ -241,6 +255,9 @@
   description: job-description-eighties-road-rash
   playTimeTracker: EightiesRoadRash
   whitelisted: false
+  access:
+  - 80s
+  - 80sSlave
   requirements:
   - !type:MinPlayersRequirement
     min: 0
@@ -269,6 +286,7 @@
   id: EightiesRoadRashGear
   equipment:
     bandage: NCClothingBandageRaiders
+    id: MisfitsEightiesIDCard
     jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer
     outerClothing: MisfitsClothingOuterEightiesArmor
     shoes: N14ClothingShoesRaider
