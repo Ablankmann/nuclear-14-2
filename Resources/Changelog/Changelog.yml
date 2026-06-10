@@ -6694,3 +6694,10 @@ Entries:
   id: 6039
   time: '2026-06-10T00:44:57.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/734
+- author: OliOliOnsiPree
+  changes:
+    - type: Add
+      message: 8++ tribal warpaint markings
+  id: 6040
+  time: '2026-06-10T21:16:49.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/741
