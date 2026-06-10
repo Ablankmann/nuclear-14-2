@@ -35,15 +35,6 @@
     state: tribalpaintwhitestripe
 
 - type: marking
-  id: tribalpaintwhitestripe
-  bodyPart: Face
-  markingCategory: Face
-  speciesRestriction: [Human, Ghoul]
-  sprites:
-  - sprite: _Misfits/Mobs/Customization/tribal_warpaint.rsi
-    state: tribalpaintwhitestripe
-
-- type: marking
   id: tribalpaintclaw
   bodyPart: Chest
   markingCategory: Chest
