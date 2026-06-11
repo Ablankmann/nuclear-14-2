@@ -588,6 +588,35 @@
   items:
     - N14ClothingNeckROmantleNCR
 
+- type: loadout
+  id: MisfitsLoadoutHeadNCRSlouch
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRCommander
+        - NCRDoctor
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+        - NCRMilitaryPoliceRecruit
+        - NCRMilitaryPoliceSergeant
+        - NCRMilitaryPoliceCaptain
+        - NCRRangerRecruit
+        - NCRFieldRanger
+        - NCRPatrolRanger
+        - NCRVeteranRanger
+        - NCRCitizen
+        - NCRTrader
+  items:
+    - N14ClothingHeadHatNCRSlouch
+
 # === Head: NCR Rangers ===
 
 - type: loadout

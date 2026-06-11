@@ -484,6 +484,7 @@ loadout-name-MisfitsLoadoutHeadNCRSidecap = NCR sidecap
 loadout-name-MisfitsLoadoutHeadNCRBeretOfficer = NCR officer beret
 loadout-name-MisfitsLoadoutHeadNCRBeretMedic = NCR medic beret
 loadout-name-MisfitsLoadoutHeadNCRBeretQM = NCR quartermaster beret
+loadout-name-N14ClothingHeadHatNCRSlouch = NCR slouch hat
 # Head — NCR Rangers
 loadout-name-MisfitsLoadoutHeadArmyBeretRanger = ranger beret
 loadout-name-MisfitsLoadoutHeadNCRBeretRecon = NCR recon beret
