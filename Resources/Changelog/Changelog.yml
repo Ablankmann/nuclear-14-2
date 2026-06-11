@@ -4764,7 +4764,7 @@ Entries:
       message: >-
         Shifted some entities in the Followers utility shed to make it more
         accessible, as the shelf containing body bags and other useful items
-        itself was not able to be accessed before. 
+        itself was not able to be accessed before.
   id: 5852
   time: '2026-05-10T07:24:49.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/464
@@ -4948,7 +4948,7 @@ Entries:
     - type: Fix
       message: >-
         HP and SP now require 10 hours of squire, just like regular paladin.
-        this wont impact anyone who meets the new paladin requirements. 
+        this wont impact anyone who meets the new paladin requirements.
   id: 5870
   time: '2026-05-12T23:54:47.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/491
@@ -5044,7 +5044,7 @@ Entries:
       message: >-
         Ported upstream botany fixes / changes. Majority of mutations are no
         longer persistent & can be rerolled. Can now examine plants to see
-        obvious mutations. 
+        obvious mutations.
     - type: Remove
       message: Atmos related & teleporting mutations have been disabled
   id: 5881
@@ -5410,7 +5410,7 @@ Entries:
     - type: Tweak
       message: >-
         Turned the Experimental X-01 Power Armor into a living, unremoveable
-        casket. 
+        casket.
   id: 5918
   time: '2026-05-20T22:29:54.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/563
@@ -5430,7 +5430,7 @@ Entries:
       message: >-
         laser assaultron now has less damaging laser but it can be fired several
         times on a battery instead of once. total damage if you land every laser
-        is theoretically higher, but takes multiple shots. 
+        is theoretically higher, but takes multiple shots.
   id: 5919
   time: '2026-05-21T00:57:33.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/566
@@ -5607,11 +5607,11 @@ Entries:
       message: >-
         Added very light doafters to injectors. chemical syringes do not have a
         doafter but cannot be crafted anymore. These are special items meant for
-        medics to use for quick healing. 
+        medics to use for quick healing.
     - type: Fix
       message: >-
         chance asked for 80s to just need waster playtime so I obliged. Road
-        Rash now only needs 10 hours of  wastelander playtime. 
+        Rash now only needs 10 hours of  wastelander playtime.
     - type: Add
       message: NCR now gets a 40mm grenade in their T3 ammo BP
     - type: Tweak
@@ -6565,10 +6565,3 @@ Entries:
   id: 6026
   time: '2026-06-06T08:16:36.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/707
-- author: Vixting
-  changes:
-    - type: Fix
-      message: Fix beaker transfer not being updated on the lcient
-  id: 6027
-  time: '2026-06-06T16:58:46.0000000+00:00'
-  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/708
