@@ -7023,3 +7023,12 @@ Entries:
   id: 6069
   time: '2026-06-14T20:38:22.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/803
+- author: paige404
+  changes:
+    - type: Fix
+      message: >-
+        Ghouls, Glowing Ghouls, and Supermutants will no longer take limb damage
+        from things that don't hurt limbs.
+  id: 6070
+  time: '2026-06-14T22:15:17.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/804
