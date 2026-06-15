@@ -472,23 +472,6 @@
 
 - type: entity
   parent: N14ClothingOuterPowerArmorMidwest
-  id: N14ClothingOuterPowerArmorMidwestSilver
-  name: BoS Silver Power Armor
-  description: A silver-refinished Midwest-pattern Brotherhood power armor frame that keeps the standard set's mobility-focused profile.
-  components:
-  - type: Sprite
-    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/midwestsilver.rsi
-  - type: Clothing
-    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/midwestsilver.rsi
-  - type: ToggleableClothing
-    clothingPrototypes:
-      head: N14ClothingHeadHelmetPowerArmorMidwestSilver
-      gloves: N14ClothingPAGauntletsMBoS
-      shoes: N14ClothingPABootsMBoS
-      back: N14ClothingPowerSystemsBack
-
-- type: entity
-  parent: N14ClothingOuterPowerArmorMidwest
   id: N14ClothingOuterPowerArmorMidwestCommander
   name: BoS Commander Power Armor
   description: A unknown model of power armor manufactured by the Brotherhood of Steel. This modified version is commonly used by high-ranking Brotherhood of Steel Paladins.

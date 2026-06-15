@@ -695,23 +695,6 @@
         type: WastelandMapBoundUserInterface
 
 - type: entity
-  parent: N14ClothingHeadHelmetPowerArmorMidwest
-  id: N14ClothingHeadHelmetPowerArmorMidwestSilver
-  name: BoS Silver Power Armor Helmet
-  description: A silver-refinished Midwest-pattern Brotherhood power armor helmet.
-  components:
-  - type: Sprite
-    netsync: false
-    sprite: _Nuclear14/Clothing/Head/PowerArmorHelmets/midwestsilver.rsi
-    layers:
-    - state: icon
-    - state: icon-unshaded
-    - state: light-overlay
-      visible: false
-      shader: unshaded
-      map: [ "light" ]
-
-- type: entity
   parent: N14ClothingHeadHelmetPowerArmorX01
   id: N14ClothingHeadHelmetPowerArmorMidwestCommander
   name: BoS Commander Power Armor Helmet
