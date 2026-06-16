@@ -7184,3 +7184,12 @@ Entries:
   id: 6081
   time: '2026-06-16T00:52:52.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/818
+- author: HungryCuban
+  changes:
+    - type: Add
+      message: >-
+        Some sprites, lets not spoil them they will be announced when added as
+        items.
+  id: 6082
+  time: '2026-06-16T00:53:16.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/819
