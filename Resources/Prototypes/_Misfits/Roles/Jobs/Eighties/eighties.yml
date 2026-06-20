@@ -292,8 +292,6 @@
         factions:
           - PlayerRaider
           - Wastelander
-  - !type:AddTraitSpecial
-    traits: [ N14RidingPerk ]
 
 - type: startingGear
   id: EightiesRoadRashGear
