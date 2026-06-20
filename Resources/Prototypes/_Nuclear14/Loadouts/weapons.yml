@@ -570,25 +570,6 @@
   items:
     - N14WeaponSMGPPSh41
 
-- type: loadout
-  id: N14WeaponSMGAmerican180
-  category: Weapons
-  cost: 21
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponSMGAmerican180
 
 
 
@@ -1318,22 +1299,6 @@
   items:
     - N14MagazineSMG9mmDrum
     
-- type: loadout
-  id: N14MagazineAmerican180Drum
-  category: Weapons
-  cost: 3
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutAmmoBig
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14MagazineAmerican180Drum
- ARs
 
 
 - type: loadout
