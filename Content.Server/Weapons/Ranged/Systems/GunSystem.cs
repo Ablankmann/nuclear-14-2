@@ -200,7 +200,7 @@ public sealed partial class GunSystem : SharedGunSystem
 
                     //in the situation when user == null, means that the cannon fires on its own (via signals). And we need the gun to not fire by itself in this case
                     var lastUser = user ?? gunUid;
-                    var rayIgnore = GetShotIgnoreEntity(user);
+                    var rayExtraIgnore = GetShotExtraIgnoredEntity(user);
 
                     if (hitscan.Reflective != ReflectType.None)
                     {
@@ -211,7 +211,7 @@ public sealed partial class GunSystem : SharedGunSystem
                                     dir,
                                     hitscan,
                                     lastUser,
-                                    rayIgnore,
+                                    rayExtraIgnore,
                                     gun.Target,
                                     userSession,
                                     out var hit,
@@ -357,7 +357,7 @@ public sealed partial class GunSystem : SharedGunSystem
         Vector2 direction,
         HitscanPrototype hitscan,
         EntityUid source,
-        EntityUid? ignoredEntity,
+        EntityUid? extraIgnoredEntity,
         EntityUid? target,
         ICommonSession? session,
         out EntityUid hit,
@@ -367,7 +367,13 @@ public sealed partial class GunSystem : SharedGunSystem
         distance = hitscan.MaxLength;
 
         var ray = new CollisionRay(from.Position, direction, hitscan.CollisionMask);
-        var rayCastResults = Physics.IntersectRay(from.MapId, ray, hitscan.MaxLength, ignoredEntity ?? source, false).ToList();
+        var rayCastResults = Physics.IntersectRayWithPredicate(
+            from.MapId,
+            ray,
+            (Source: source, Extra: extraIgnoredEntity),
+            static (hit, ignored) => hit == ignored.Source || hit == ignored.Extra,
+            hitscan.MaxLength,
+            false).ToList();
         var raycastEvent = new HitScanAfterRayCastEvent(rayCastResults);
         RaiseLocalEvent(source, ref raycastEvent);
 
