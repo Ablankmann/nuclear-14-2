@@ -97,6 +97,15 @@ public sealed class FactionWarSystem : EntitySystem
         "CaesarLegionFrumentarii"
     };
 
+    /// <summary>Major factions — each can only be in ONE war at a time.</summary>
+    private static readonly HashSet<string> MajorFactions = new()
+    {
+        "NCR",
+        "CaesarLegion",
+        "BrotherhoodOfSteel",
+        "Enclave",
+    };
+
 
     // ── State ──────────────────────────────────────────────────────────────
 
@@ -496,6 +505,31 @@ public sealed class FactionWarSystem : EntitySystem
         {
             SendResult(player, false, "Target player is already in a war.");
             return;
+        }
+
+        // #Misfits Add - Same-faction war check
+        TryGetAutoEnlistFaction(playerEntity, out var declarerFaction);
+        TryGetAutoEnlistFaction(targetEntity, out var targetFaction);
+
+        if (declarerFaction != null
+            && targetFaction != null
+            && string.Equals(declarerFaction, targetFaction, StringComparison.OrdinalIgnoreCase))
+        {
+            SendResult(player, false, "Your faction cannot wage war on itself.");
+            return;
+        }
+
+        // #Misfits Add - Major faction already-in-war check
+        foreach (var faction in new[] { declarerFaction, targetFaction })
+        {
+            if (faction == null || !MajorFactions.Contains(faction))
+                continue;
+
+            if (IsFactionInAnyWar(faction))
+            {
+                SendResult(player, false, $"{faction} is already committed to a war.");
+                return;
+            }
         }
 
         // Create war entry (entity-bound: war key derived from character entities)
@@ -939,6 +973,44 @@ public sealed class FactionWarSystem : EntitySystem
         {
             SendJoinResult(player, false, "Invalid side selection.");
             return;
+        }
+
+        // #Misfits Add - Major faction join restriction: no 3rd major stacking
+        if (TryGetAutoEnlistFaction(joinerEntity, out var joinerFaction)
+            && MajorFactions.Contains(joinerFaction))
+        {
+            var majorsOnSide1 = 0;
+            var majorsOnSide2 = 0;
+            foreach (var (pe, _) in war.Participants)
+            {
+                var puid = GetEntity(pe);
+                if (!Exists(puid))
+                    continue;
+                if (!TryGetAutoEnlistFaction(puid, out var pf))
+                    continue;
+                if (!MajorFactions.Contains(pf))
+                    continue;
+
+                if (war.Participants[pe] == 1)
+                    majorsOnSide1++;
+                else
+                    majorsOnSide2++;
+            }
+
+            if (majorsOnSide1 > 0 && majorsOnSide2 > 0)
+            {
+                _chat.DispatchServerMessage(player, "This war already involves two major factions. You cannot join as a third.");
+                SendJoinResult(player, false, "This war already involves two major factions.");
+                return;
+            }
+
+            var joiningSide = msg.ChosenSide;
+            if ((joiningSide == 1 && majorsOnSide1 > 0) || (joiningSide == 2 && majorsOnSide2 > 0))
+            {
+                _chat.DispatchServerMessage(player, "Another major faction is already on that side of the war.");
+                SendJoinResult(player, false, "Another major faction is already on that side.");
+                return;
+            }
         }
 
         // Add character entity to participants (character-bound)
@@ -1599,6 +1671,23 @@ public sealed class FactionWarSystem : EntitySystem
     private bool IsEntityInOtherWar(NetEntity entity, string currentWarKey)
     {
         return _warParticipants.TryGetValue(entity, out var entry) && entry.WarKey != currentWarKey;
+    }
+
+    /// <summary>
+    /// Checks if any participant in any active or pending war belongs to the given faction.
+    /// </summary>
+    private bool IsFactionInAnyWar(string factionId)
+    {
+        foreach (var war in _activeWars.Values)
+        {
+            foreach (var (entity, _) in war.Participants)
+            {
+                var uid = GetEntity(entity);
+                if (Exists(uid) && _npcFaction.IsMember(uid, factionId))
+                    return true;
+            }
+        }
+        return false;
     }
 
     public bool HasWar(string warKey)
