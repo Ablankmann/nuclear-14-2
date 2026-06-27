@@ -161,3 +161,7 @@ undecided-loadout-category-misfits-pal-wattz-description =
 # Tribal Robot
 job-name-synthetic-protectron-tribal = Protectron Spirit-Tender
 job-description-synthetic-protectron-tribal = An agricultural robot that has been adopted by the local tribe and modified over decades or centuries.
+
+# Legion Acolyte of Mars
+job-name-caesar-legion-Acolyte-of-mars = Acolyte of Mars
+job-description-caesar-legion-Acolyte-of-mars = You are a devoted Acolyte of Mars, you answer to the Priestess directly.

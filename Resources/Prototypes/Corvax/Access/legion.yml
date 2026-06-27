@@ -199,3 +199,10 @@
   - CaesarLegion
   - CaesarLegionSlave
   - CaesarLegionRecruit
+
+- type: accessGroup
+  id: CaesarLegionAcolyteOfMars
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit

@@ -325,6 +325,19 @@
       - state: green
       - state: recruit
 
+# Acolyte of Mars spawner — 3 slots, same spawn as POM
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionAcolyteOfMars
+  name: Acolyte of Mars
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionAcolyteOfMars
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
 - type: entity
   parent: MisfitsSpawnPointCaesarLegionCenturion
   id: MisfitsSpawnPointCaesarLegionLegionnaireRecruit
