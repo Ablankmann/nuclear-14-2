@@ -307,7 +307,7 @@
       coefficients:
         Blunt: 0.75
         Slash: 0.75
-        Piercing: 0.65 #Vex is a honored veteran
+        Piercing: 0.70
         Heat: 0.70 #more heat resist, metal pans cover chest and abdomen
   - type: ExplosionResistance
     damageCoefficient: 0.80
