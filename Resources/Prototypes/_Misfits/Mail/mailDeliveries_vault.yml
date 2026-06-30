@@ -3,11 +3,14 @@
   everyone:
     MailVaultPlushie: 0.5
     MailVaultMedSupply: 0.8
-    MailVaultWrappingPaper: 0.4
     MailVaultScarf: 0.5
     MailVaultVodka: 0.4
     MailVaultWine: 0.4
     MailVaultBirthdayCake: 0.3
+    MailVaultPreWarMoney: 0.6
+    MailVaultCigars: 0.5
+    MailVaultFireBomb: 0.05
+    MailVaultFortuneCookies: 0.5
 
   jobs:
     VaultDoctor:
@@ -53,3 +56,4 @@
       MailVaultOverseerNocturine: 0.2
       MailVaultOverseerJusticeSet: 0.4
       MailVaultOverseerPlasmaRifle: 0.01
+      MailVaultDwellerPipboy: 0.05

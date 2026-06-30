@@ -129,6 +129,53 @@
     contents:
     - id: FoodCakeBirthday
 
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultPreWarMoney
+  suffix: vault-prewar-money
+  components:
+  - type: Mail
+    contents:
+    - id: N14CurrencyPrewarMoney100
+      maxAmount: 3
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCigars
+  suffix: vault-cigars
+  components:
+  - type: Mail
+    contents:
+    - id: CigarCase
+      prob: 0.7
+      orGroup: cigar-case
+    - id: CigarGoldCase
+      prob: 0.3
+      orGroup: cigar-case
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultFireBomb
+  suffix: vault-firebomb
+  components:
+  - type: Mail
+    contents:
+    - id: FireBomb
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultFortuneCookies
+  suffix: vault-fortune-cookies
+  components:
+  - type: Mail
+    contents:
+    - id: FoodSnackCookieFortune
+      maxAmount: 3
+
 
 # doc
 
