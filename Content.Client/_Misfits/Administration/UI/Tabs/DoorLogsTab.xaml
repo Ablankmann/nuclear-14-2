@@ -1,0 +1,15 @@
+<!-- #Misfits Add - Door Logs tab for admin menu -->
+<Control
+    xmlns="https://spacestation14.io"
+    xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    Margin="4"
+    MinSize="50 50">
+    <ScrollContainer VerticalExpand="True">
+        <BoxContainer Orientation="Vertical" SeparationOverride="4">
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Name="OpenDoorLogsButton" Command="doorlogs" Text="{Loc misfits-door-logs-tab-open-btn}" MinWidth="180" />
+                <Label Name="OpenDoorLogsDescription" Text="{Loc misfits-door-logs-tab-open-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+        </BoxContainer>
+    </ScrollContainer>
+</Control>
