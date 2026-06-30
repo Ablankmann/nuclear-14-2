@@ -24,11 +24,11 @@
       MailVaultDoctorParamedicOutfit: 0.5
       MailVaultDoctorGrenadeKit: 1.0
     VaultEngineer:
-      MailVaultEngineerCircuitry: 1.5
+      MailVaultEngineerCircuitry: 0.2
       MailVaultEngineerWelder: 1.0
       MailVaultEngineerGoggles: 0.8
       MailVaultEngineerBeret: 0.6
-      MailVaultEngineerJawsOfLife: 0.6
+      MailVaultEngineerJawsOfLife: 0.2
       MailVaultEngineerJumpsuit: 0.5
       MailVaultEngineerBelt: 0.8
       MailVaultEngineerSatchel: 0.8
@@ -38,9 +38,9 @@
       MailVaultSecurityFlashbang: 0.8
       MailVaultSecurityTearGas: 0.8
       MailVaultSecuritySword: 0.7
-      MailVaultSecurityEMP: 0.6
+      MailVaultSecurityEMP: 0.4
       MailVaultSecurityPoliceUniform: 0.4
-      MailVaultSecurityPlasmaDefender: 0.3
+      MailVaultSecurityPlasmaDefender: 0.01
       MailVaultSecurityDonuts: 0.1
     VaultDweller:
       MailVaultDwellerOutfit: 1.5
@@ -50,6 +50,6 @@
       MailVaultDwellerPirateSet: 0.3
       MailVaultDwellerWitchSet: 0.2
     Overseer:
-      MailVaultOverseerNocturine: 0.8
+      MailVaultOverseerNocturine: 0.2
       MailVaultOverseerJusticeSet: 0.4
-      MailVaultOverseerPlasmaRifle: 0.4
+      MailVaultOverseerPlasmaRifle: 0.01
