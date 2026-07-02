@@ -124,7 +124,7 @@
     interactSuccessSound:
       collection: N14DogBark #Misfits Change
   - type: ReplacementAccent
-    accent: dog
+    accent: BarkAccent
   - type: LanguageKnowledge
     speaks:
     - N14Dog
