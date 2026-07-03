@@ -118,5 +118,6 @@ public sealed class AGhost : LocalizedCommands
 
         var comp = _entities.GetComponent<GhostComponent>(ghost);
         ghostSystem.SetCanReturnToBody(comp, canReturn);
+        ghostSystem.ApplyMisfitsGhostColor(ghost, comp, mind);
     }
 }
