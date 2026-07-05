@@ -160,20 +160,20 @@
   color: "#425c25"
   uiCategory: MajorFaction
   roles:
-  # Reformer/Command
+  # Commander
   - EnclaveCommander                # Enclave Commander             | _Misfits/Roles/Jobs/Enclave/enclave_commander.yml # #Misfits Add
   # Officers 
-  - EnclaveSeniorOfficer            # Enclave Senior Officer, 1stLT | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
-  - EnclaveJuniorOfficer            # Enclave Junior Officer, 2ndLT | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
-  - EnclaveHeadScientist            # Enclave Head Scientist        | /_Misfits/Roles/Jobs/Enclave/enclave_head_scientist.yml # #Misfits Add
+  - EnclaveSeniorOfficer            # Enclave Senior Officer, 1stLT | _Misfits/Roles/Jobs/Enclave/enclave_senior_officer.yml # #Misfits Add
+  - EnclaveJuniorOfficer            # Enclave Junior Officer, 2ndLT | _Misfits/Roles/Jobs/Enclave/enclave_junior_officer.yml # #Misfits Add
   # Scientists
+  - EnclaveHeadScientist            # Enclave Head Scientist        | _Misfits/Roles/Jobs/Enclave/enclave_head_scientist.yml # #Misfits Add
   - EnclaveScientist
   - EnclaveJuniorScientist
   # Enlisted
-  - EnclaveNCO                      # Enclave Enlisted, NCO, E5     | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
-  - EnclaveEnlisted                 # Enclave Enlisted, E4          | /_Misfits/Roles/Jobs/Enclave/enclave_enlisted.yml # #Misfits Add
+  - EnclaveNCO                      # Enclave Enlisted, NCO         | _Misfits/Roles/Jobs/Enclave/enclave_nco.yml # #Misfits Add
+  - EnclaveEnlisted                 # Enclave Enlisted              | _Misfits/Roles/Jobs/Enclave/enclave_enlisted.yml # #Misfits Add
   # Recruit (counterpart to Legion Slave, NCR Prisoner, etc.)
-  - EnclaveRecruit
+  #  - EnclaveRecruit
 
 - type: department
   id: Wastelander
