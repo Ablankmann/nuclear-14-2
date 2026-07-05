@@ -163,14 +163,14 @@
   # Reformer/Command
   - EnclaveOfficerReformer          # The Reformer (Admin Only)     | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
   - EnclaveOfficerCaptain           # Enclave Commander             | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
-  # NCOs 
+  # Officers 
   - EnclaveOfficerOneLieutenant     # Enclave Senior Officer, 1stLT | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
   - EnclaveOfficerTwoLieutenant     # Enclave Junior Officer, 2ndLT | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
   - EnclaveHeadScientist            # Enclave Head Scientist        | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
   # Enlisted
-  - EnclaveCorporal                 # Enclave Enlisted, E4          | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
-  - EnclaveLanceCorporal            # Enclave Enlisted, E3          | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
-  - EnclavePrivateFirstClass        # Enclave Enlisted, E2          | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclaveSergeant            # Enclave Enlisted, NCO, E5          | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclaveCorporal            # Enclave Enlisted, E4               | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclaveLanceCorporal       # Enclave Enlisted, E3               | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
   # Scientists
   - EnclaveSeniorScientist
   - EnclaveScientist
