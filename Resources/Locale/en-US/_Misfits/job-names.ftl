@@ -40,9 +40,7 @@ job-description-enclave-junior-officer = Lead squads in the field, execute missi
 
 job-name-enclave-nco = Enclave Sergeant
 job-description-enclave-nco = Maintain discipline, train enlisted personnel, and ensure tactical readiness on the ground.
-job-name-enclave-enlisted-e4 = Enclave Corporal
-job-description-enclave-enlisted-e4 = Junior NCO. Follow the lead of your Sergeant, supervise the recruits, and ensure the Enlisted are in-line.
-job-name-enclave-enlisted-e3 = Enclave Lance Corporal
+job-name-enclave-enlisted = Enclave Enlisted
 job-description-enclave-enlisted-e3 = Serve as the Enclave's frontline trooper, follow orders, and execute the mission.
 
 job-name-enclave-head-scientist = Enclave Head Scientist
