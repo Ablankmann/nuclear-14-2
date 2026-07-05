@@ -11,7 +11,7 @@
   name: job-name-enclave-recruit
   description: job-description-enclave-recruit
   playTimeTracker: EnclaveRecruit
-  supervisors: job-supervisors-none
+  supervisors: job-supervisors-enclave-recruit
 
 - type: playTimeTracker
   id: EnclaveRecruit
