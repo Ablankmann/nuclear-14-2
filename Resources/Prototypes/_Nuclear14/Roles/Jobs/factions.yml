@@ -155,6 +155,29 @@
   - SyntheticRobobrain
 
 - type: department
+  id: Enclave
+  description: department-Enclave-description
+  color: "#425c25"
+  uiCategory: MajorFaction
+  roles:
+  # Reformer/Command
+  - EnclaveOfficerReformer          # The Reformer (Admin Only)     | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclaveOfficerMajor             # Enclave Commander             | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  # NCOs 
+  - EnclaveOfficerOneLieutenant     # Enclave Senior Officer, 1stLT | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclaveOfficerTwoLieutenant     # Enclave Junior Officer, 2ndLT | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclaveHeadScientist            # Enclave Head Scientist        | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  # Enlisted
+  - EnclaveCorporal                 # Enclave Enlisted, E4          | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclaveLanceCorporal            # Enclave Enlisted, E3          | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclavePrivateFirstClass        # Enclave Enlisted, E2          | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  # Scientists
+  - EnclaveSeniorScientist
+  - EnclaveScientist
+  # Recruit (counterpart to Legion Slave, NCR Prisoner, etc.)
+  - EnclaveRecruit
+
+- type: department
   id: Wastelander
   description: department-Wastelander-description
   color: "#81c784"
