@@ -115,7 +115,6 @@ job-name-vault-security = Vault Security
 job-description-vault-security = Keep order within the Vault and report to the Overseer. For the good of the Vault!
 
 # Enclave
-
 job-name-enclave-officer-captain = Enclave Captain
 job-description-enclave-captain = Executive Officer. Assign missions, direct your enlisted, and act under the lead of the Reformer. Restore America to it's former glory.
 job-name-enclave-officer-lieutenant-one = Enclave First Lieutenant
