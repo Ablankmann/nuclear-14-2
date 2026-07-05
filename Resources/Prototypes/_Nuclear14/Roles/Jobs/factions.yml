@@ -167,8 +167,8 @@
   - EnclaveJuniorOfficer            # Enclave Junior Officer        | _Misfits/Roles/Jobs/Enclave/enclave_junior_officer.yml # #Misfits Add
   # Scientists
   - EnclaveHeadScientist            # Enclave Head Scientist        | _Misfits/Roles/Jobs/Enclave/enclave_head_scientist.yml # #Misfits Add
-  - EnclaveScientist
-  - EnclaveJuniorScientist
+  - EnclaveScientist                # Enclave Senior Scientist      | _Misfits/Roles/Jobs/Enclave/enclave_scientist.yml # #Misfits Add
+  - EnclaveJuniorScientist          # Enclave Junior Scientist      | _Misfits/Roles/Jobs/Enclave/enclave_junior_scientist.yml # #Misfits Add
   # Enlisted
   - EnclaveNCO                      # Enclave Enlisted, NCO         | _Misfits/Roles/Jobs/Enclave/enclave_nco.yml # #Misfits Add
   - EnclaveEnlisted                 # Enclave Enlisted              | _Misfits/Roles/Jobs/Enclave/enclave_enlisted.yml # #Misfits Add
