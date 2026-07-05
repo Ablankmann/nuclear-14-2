@@ -162,7 +162,7 @@
   roles:
   # Reformer/Command
   - EnclaveOfficerReformer          # The Reformer (Admin Only)     | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
-  - EnclaveOfficerMajor             # Enclave Commander             | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclaveOfficerCaptain           # Enclave Commander             | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
   # NCOs 
   - EnclaveOfficerOneLieutenant     # Enclave Senior Officer, 1stLT | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
   - EnclaveOfficerTwoLieutenant     # Enclave Junior Officer, 2ndLT | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
