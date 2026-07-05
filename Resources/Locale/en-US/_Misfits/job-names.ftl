@@ -33,12 +33,12 @@ job-description-enclave-reformer = You are the Enclave's supreme authority on th
 
 job-name-enclave-commander = Enclave Commander
 job-description-enclave-commander = Lead the Enclave cell with absolute authority, coordinate military and science branches, and ensure operational security.
-job-name-enclave-senior-officer = Enclave First Lieutenant
+job-name-enclave-senior-officer = Enclave Senior Officer
 job-description-enclave-senior-officer = Serve as the Commander's right hand, directing field operations and managing subordinate officers.
-job-name-enclave-junior-officer = Enclave Second Lieutenant
+job-name-enclave-junior-officer = Enclave Junior Officer
 job-description-enclave-junior-officer = Lead squads in the field, execute mission objectives, and bridge the gap between NCOs and senior command.
 
-job-name-enclave-nco = Enclave Sergeant
+job-name-enclave-nco = Enclave NCO
 job-description-enclave-nco = Maintain discipline, train enlisted personnel, and ensure tactical readiness on the ground.
 job-name-enclave-enlisted = Enclave Enlisted
 job-description-enclave-enlisted-e3 = Serve as the Enclave's frontline trooper, follow orders, and execute the mission.
