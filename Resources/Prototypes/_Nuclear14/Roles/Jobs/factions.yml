@@ -168,9 +168,9 @@
   - EnclaveOfficerTwoLieutenant     # Enclave Junior Officer, 2ndLT | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
   - EnclaveHeadScientist            # Enclave Head Scientist        | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
   # Enlisted
-  - EnclaveSergeant            # Enclave Enlisted, NCO, E5          | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
-  - EnclaveCorporal            # Enclave Enlisted, E4               | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
-  - EnclaveLanceCorporal       # Enclave Enlisted, E3               | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclaveSergeant                 # Enclave Enlisted, NCO, E5     | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclaveCorporal                 # Enclave Enlisted, E4          | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - EnclaveLanceCorporal            # Enclave Enlisted, E3          | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
   # Scientists
   - EnclaveSeniorScientist
   - EnclaveScientist
