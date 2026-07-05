@@ -27,29 +27,34 @@ job-description-ncr-citizen = You are a citizen of the NCR coming east for work,
 job-name-ncr-trader = NCR Trader
 job-description-ncr-trader = You are a Caravaneer and a citizen of the NCR, supplying the republic's trade routes.
 
-# #Misfits Add - Enclave job locale (expanded 8-role hierarchy). Reformer is admin-only apex role.
+# #Misfits Add - Enclave job locale (expanded 10-role hierarchy). Reformer is admin-only apex role.
 job-name-enclave-reformer = The Reformer
 job-description-enclave-reformer = You are the Enclave's supreme authority on the field — its Reformer. Shape the cell's doctrine, judge its members, and determine its future. Answerable only to Eden.
+
 job-name-enclave-commander = Enclave Commander
 job-description-enclave-commander = Lead the Enclave cell with absolute authority, coordinate military and science branches, and ensure operational security.
-job-name-enclave-senior-officer = Enclave Senior Officer
+job-name-enclave-senior-officer = Enclave First Lieutenant
 job-description-enclave-senior-officer = Serve as the Commander's right hand, directing field operations and managing subordinate officers.
-job-name-enclave-junior-officer = Enclave Junior Officer
+job-name-enclave-junior-officer = Enclave Second Lieutenant
 job-description-enclave-junior-officer = Lead squads in the field, execute mission objectives, and bridge the gap between NCOs and senior command.
-job-name-enclave-nco = Enclave NCO
+
+job-name-enclave-nco = Enclave Sergeant
 job-description-enclave-nco = Maintain discipline, train enlisted personnel, and ensure tactical readiness on the ground.
-job-name-enclave-enlisted = Enclave Enlisted
-job-description-enclave-enlisted = Serve as the Enclave's frontline trooper, follow orders, and execute the mission.
+job-name-enclave-enlisted-e4 = Enclave Corporal
+job-description-enclave-enlisted-e4 = Junior NCO. Follow the lead of your Sergeant, supervise the recruits, and ensure the Enlisted are in-line.
+job-name-enclave-enlisted-e3 = Enclave Lance Corporal
+job-description-enclave-enlisted-e3 = Serve as the Enclave's frontline trooper, follow orders, and execute the mission.
+
 job-name-enclave-head-scientist = Enclave Head Scientist
-job-description-enclave-head-scientist = Direct the Enclave's research programs, oversee junior scientists, and advise command on technical matters.
-job-name-enclave-scientist = Enclave Scientist
+job-description-enclave-head-scientist = Direct the Enclave's research programs, oversee the scientists, and advise command on technical matters.
+job-name-enclave-scientist = Enclave Senior Scientist
 job-description-enclave-scientist = Conduct field research, maintain advanced equipment, and support the cell's scientific mission.
 job-name-enclave-junior-scientist = Enclave Junior Scientist
 job-description-enclave-junior-scientist = Assist senior scientists, learn Enclave protocols, and contribute to ongoing research.
 
-# #Misfits Add - EnclaveRecruit: hidden job for per-round recruitment tracking.
-job-name-enclave-recruit = Enclave Recruit
-job-description-enclave-recruit = Per-round Enclave recruit. Playtime here counts toward Enclave department timers.
+job-name-enclave-recruit = Enclave Recruit 
+job-description-enclave-recruit = The newest rank-and-file personnel indocrinated into the Enclave's ranks, coming from all over. Submit to your superiors, follow your orders, and become proud to be an American.
+
 
 # Synthetics job names and descriptions (Misfits-specific)
 
