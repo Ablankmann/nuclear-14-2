@@ -114,29 +114,6 @@ job-description-vault-engineer = Maintain the Vault and all its vital systems to
 job-name-vault-security = Vault Security
 job-description-vault-security = Keep order within the Vault and report to the Overseer. For the good of the Vault!
 
-# Enclave
-job-name-enclave-officer-captain = Enclave Captain
-job-description-enclave-captain = Executive Officer. Assign missions, direct your enlisted, and act under the lead of the Reformer. Restore America to it's former glory.
-job-name-enclave-officer-lieutenant-one = Enclave First Lieutenant
-job-description-enclave-officer-lieutenant-one = Senior Officer. Second-in-Command. Follow the lead of your Captain, and the Reformer.
-job-name-enclave-officer-lieutenant-two = Enclave Second Lieutenant
-job-description-enclave-officer-lieutenant-two = Junior Officer. Learn the ropes as an Officer of the American Army.
-job-name-enclave-scientist-head = Enclave Head Scientist
-job-description-enclave-scientist-head = The acting Research Director for the Enclave. Assign projects, develop new innovations, and help the Enclave propel America to it's former glory.
-job-name-enclave-enlisted-sergeant = Enclave Sergeant
-job-description-enclave-enlisted-sergeant = Squad-level NCO. Lead a fireteam, direct the Enclave's Enlisted, and follow orders given to you from the Enclave's Command Personnel.
-job-name-enclave-enlisted-corporal = Enclave Corporal
-job-description-enclave-enlisted-corporal = Junior NCO. Supervise the Enlisted, follow the orders of your Sergeant, save the United States of America.
-job-name-enclave-enlisted-lcorporal = Enclave Lance Corporal
-job-description-enclave-enlisted-lcorporal = The step beneath Corporalship. Follow the orders of your Sergeant and Corporals, supervise the Recruits, save the United States of America.
-job-name-enclave-scientist-mid = Enclave Senior Scientist
-job-description-enclave-scientist-mid = An experience Scientist, trained to develop Enclave projects. Follow the lead of your Head, develop new innovations, and help the Enclave propel America to it's former glory.
-job-name-enclave-scientist = Enclave Scientist
-job-description-encalve-scientist = A newer face to the Enclave's research personnel. Follow the lead of your Head, the guidance of your Seniors, and help the Enclave propel America to it's former glory.
-job-name-enclave-recruit = Enclave Recruit 
-job-description-enclave-recruit = The newest rank-and-file personnel indocrinated into the Enclave's ranks, coming from all over. Submit to your superiors, follow your orders, and become proud to be an American.
-
-
 # Wasteland
 # #Misfits Change - renamed for Town faction clarity
 job-name-farmer = Town Farmer
