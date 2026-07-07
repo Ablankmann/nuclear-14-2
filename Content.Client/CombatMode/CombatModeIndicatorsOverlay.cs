@@ -47,6 +47,7 @@ public sealed class CombatModeIndicatorsOverlay : Overlay
         _eye = eye;
         _combat = combatSys;
         _hands = hands;
+        _rmcWeaponController = entMan.System<RMCWeaponControllerSystem>();
 
         var spriteSys = _entMan.EntitySysManager.GetEntitySystem<SpriteSystem>();
         _gunSight = spriteSys.Frame0(new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Misc/crosshair_pointers.rsi"),
@@ -82,6 +83,15 @@ public sealed class CombatModeIndicatorsOverlay : Overlay
         var mousePos = mouseScreenPosition.Position;
         var uiScale = (args.ViewportControl as Control)?.UIScale ?? 1f;
         var limitedScale = uiScale > 1.25f ? 1.25f : uiScale;
+        
+        // RMC14, ported into Misfits
+        var crosshairEntity = handEntity;
+        if (_rmcWeaponController.TryGetControllingWeapon(out var weapon))
+            crosshairEntity = weapon;
+
+        var sight = isHandGunItem ? (isGunBolted ? _gunSight : _gunBoltSight) : _meleeSight;
+        if (crosshairEntity != null && _rmcCombatMode.GetCrosshair(crosshairEntity.Value) is { } crosshair)
+        {
 
         var sight = isHandGunItem ? (isGunBolted ? _gunSight : _gunBoltSight) : _meleeSight;
         DrawSight(sight, args.ScreenHandle, mousePos, limitedScale * Scale);
