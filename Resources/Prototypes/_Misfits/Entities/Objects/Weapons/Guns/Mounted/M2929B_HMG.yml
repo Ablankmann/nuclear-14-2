@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ CMBaseWeaponGun, BaseItem]
+  parent: BaseItem
   id: N14BrowningMounted
   name: M2929B heavy machine gun
   description: The point and shooty bit of your rooty tooty, all nice and disassembled for moving.
