@@ -1,6 +1,6 @@
 using Content.Shared.Actions;
 
-namespace Content.Shared._RMC14.Emplacements;
+namespace Content.Shared._RMC.Emplacements;
 
 public sealed partial class DismountActionEvent : InstantActionEvent
 {
