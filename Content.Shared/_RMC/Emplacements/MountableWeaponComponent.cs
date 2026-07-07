@@ -1,6 +1,6 @@
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._RMC14.Emplacements;
+namespace Content.Shared._RMC.Emplacements;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 [Access(typeof(MountableWeaponSystem), typeof(SharedWeaponMountSystem))]
