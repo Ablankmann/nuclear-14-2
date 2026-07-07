@@ -1,0 +1,146 @@
+- type: entity
+  parent: [ CMBaseWeaponGun, BaseItem]
+  id: N14BrowningMounted
+  name: M2929B heavy machine gun
+  description: The point and shooty bit of your rooty tooty, all nice and disassembled for moving.
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Sprite
+    sprite: Objects/Tools/Toolboxes/toolbox_syn.rsi
+  - type: StaticPrice
+    price: 750
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        insertSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_sg_reload.ogg
+        ejectSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_sg_reload.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - N14Magazine762Belt
+          - N14Magazine762BeltExtended
+  - type: MountableWeapon
+  - type: Scope
+    scopePopup: null
+    unScopePopup: null
+    canUseInsideContainer: true
+    zoomLevels:
+    - zoom: 1
+      offset: 7
+      doAfter: 0
+      allowMovement: true
+  - type: Tag
+    tags:
+    - N14WeaponMounted
+
+- type: entity
+  parent: N14BrowningMounted
+  id: N14BrowningMountedStatic
+  name: M2929B heavy machine gun
+  components:
+  - type: AmmoCounter
+  - type: MagazineAmmoProvider
+    autoEject: false
+  - type: Gun
+    minAngle: 2
+    maxAngle: 8
+    angleIncrease: 1
+    angleDecay: 10
+    fireRate: 7
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+    soundGunshot:
+      collection: N14HMGGunshot
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14MagazineMinigun5mm
+        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - Magazine762AmmoBelt
+            - Magazine762AmmoBeltExtended
+      gun_chamber:
+        name: Chamber
+        startingItem: N14Cartridge762Rifle
+        priority: 1
+        whitelist:
+          tags:
+            - N14Cartridge762Rifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+    baseFireRate: 5
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: N14
+        insertSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_sg_reload.ogg
+        ejectSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_sg_reload.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - Magazine762AmmoBelt
+          - Magazine762AmmoBeltExtended
+  - type: Scope
+    zoomLevels:
+    - zoom: 1
+      offset: 12
+      doAfter: 0
+      allowMovement: true
+  - type: Gun
+    shootOriginOffset: 0, -0.5
+
+# The "Magazine" (AmmoBeltExtended)
+
+- type: entity
+  id: Magazine762AmmoBeltExtended
+  name: "extended ammo belt (7.62mm)"
+  description: "A pre-war designed extention of the standard 7.62mm ammunition belt. It's used primarily for the M2929B HMG."
+  parent: Magazine762AmmoBelt
+  components:
+  - type: Tag
+    tags:
+      - N14Magazine762BeltExtended
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - N14Cartridge762Rifle
+    proto: N14Cartridge762Rifle
+    capacity: 250 # mirrors the real-life M1919 Browning
+
+
+# Sandbag and Metal mounts
+- type: entity
+  parent: N14BaseWeaponmount
+  id: N14M2929NestSandbag
+  name: M2929 Browning HMG sandbag nest
+  description: A mounted M2929 Browning HMG, protected by sandbags. These seen infantry use pre-war, and have persisted into the modern wasteland due to the robust design and lethal defense capability.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Objects/Weapons/Guns/Mounted/M1919Browning.rsi
+    state: m1919b_sandbag
+  - type: Transform
+    anchored: true
+  - type: WeaponMount
+    fixedWeaponPrototype: "N14BrowningMountedStatic"
+    isWeaponSecured: true
+    isWeaponLocked: true
+  - type: Physics
+    bodyType: Static
