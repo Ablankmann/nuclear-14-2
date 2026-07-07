@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared._RMC14.Emplacements;
+using Content.Shared._RMC.Emplacements;
 using Robust.Client.Player;
 
 namespace Content.Client._RMC14.Emplacements;
