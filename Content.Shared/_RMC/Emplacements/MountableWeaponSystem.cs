@@ -1,13 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared._RMC14.Weapons.Ranged;
-using Content.Shared._RMC14.Weapons.Ranged.Overheat;
-using Content.Shared.Foldable;
+using Content.Shared._RMC.Weapons.Ranged.Overheat;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 
-namespace Content.Shared._RMC14.Emplacements;
+namespace Content.Shared._RMC.Emplacements;
 
 public sealed class MountableWeaponSystem : EntitySystem
 {
