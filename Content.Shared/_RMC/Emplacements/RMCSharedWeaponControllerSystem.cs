@@ -1,10 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared._RMC14.Weapons.Ranged;
 using Content.Shared.Buckle;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Shared.Containers;
 
-namespace Content.Shared._RMC14.Emplacements;
+namespace Content.Shared._RMC.Emplacements;
 
 public abstract partial class RMCSharedWeaponControllerSystem : EntitySystem
 {
