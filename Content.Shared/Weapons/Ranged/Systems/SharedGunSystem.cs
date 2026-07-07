@@ -359,6 +359,14 @@ public abstract partial class SharedGunSystem : EntitySystem
             }
         } else
             shots = Math.Min(shots, gun.ShotsPerBurstModified - gun.ShotCounter);
+            
+        //RMC14, ported into Misfits
+        var shotOriginEv = new BeforeAttemptShootEvent(fromCoordinates, gun.ShootOriginOffset);
+        RaiseLocalEvent(user, ref shotOriginEv);
+
+        if (shotOriginEv.Handled)
+            fromCoordinates = shotOriginEv.Origin;
+        //
 
         var attemptEv = new AttemptShootEvent(user, null);
         RaiseLocalEvent(gunUid, ref attemptEv);
@@ -859,6 +867,19 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (sprite == null)
             return;
 
+        //RMC14, ported into Misfits
+        var muzzleFlashOffset = component.MuzzleFlashOffset;
+        var muzzleFlashOriginOffset = Vector2.Zero;
+        if (TryComp(gun, out GunComponent? gunComp))
+        {
+            var beforeEv = new RMCBeforeMuzzleFlashEvent(gun, gunComp.ShootOriginOffset);
+            gun = beforeEv.Weapon;
+            muzzleFlashOriginOffset = beforeEv.Offset;
+        }
+
+        var ev = new MuzzleFlashEvent(GetNetEntity(gun), sprite, worldAngle, muzzleFlashOffset, muzzleFlashOriginOffset); //RMC14 added parameter
+        CreateEffect(gun, ev, gun , user, muzzleFlashOffset, muzzleFlashOriginOffset);
+
         var ev = new MuzzleFlashEvent(GetNetEntity(gun), sprite, worldAngle);
         CreateEffect(gun, ev, user, player);
     }
@@ -908,7 +929,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         Dirty(gun);
     }
 
-    protected abstract void CreateEffect(EntityUid gunUid, MuzzleFlashEvent message, EntityUid? user = null, EntityUid? player = null);
+    protected abstract void CreateEffect(EntityUid gunUid, MuzzleFlashEvent message, EntityUid? user = null, EntityUid? player = null, Vector2 offset = default, Vector2 originOffset = default);
 
     // Corvax-Change-Start
     public void ChangeTarget(EntityUid target, GunComponent gun)
@@ -916,7 +937,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         gun.Target = target;
     }
     // Corvax-Change-End
-
+    
     /// <summary>
     /// Used for animated effects on the client.
     /// </summary>
