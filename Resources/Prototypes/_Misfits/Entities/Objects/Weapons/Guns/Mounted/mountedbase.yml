@@ -1,3 +1,4 @@
+# Misfits Add - Ports RMC Mountables and adds the M2929 Browning HMG.
 - type: entity
   abstract: true
   id: N14BaseWeaponmount
@@ -8,7 +9,6 @@
   - type: Corrodible
     isCorrodible: false
   - type: Strap
-    whitelist: { components: [ Marine ] }
     position: Stand
     buckleSound: /Audio/_RMC14/Weapons/Guns/Reload/hpr_reload.ogg
     unbuckleSound: /Audio/_RMC14/Weapons/Guns/Reload/hpr_unload.ogg
