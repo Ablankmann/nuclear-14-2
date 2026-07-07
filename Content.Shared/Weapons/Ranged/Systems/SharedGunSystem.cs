@@ -21,6 +21,7 @@ using Content.Shared._Misfits.CCVar;
 using Content.Shared._Misfits.Random;
 using Content.Shared._Misfits.Weapons;
 using Content.Shared._Misfits.Weapons.Ranged.Prediction;
+using Content.Shared._RMC.Emplacements; // you will never be able to guess where this is from..
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Tag;
@@ -83,7 +84,8 @@ public abstract partial class SharedGunSystem : EntitySystem
     [Dependency] private   readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly IEntityManager _entManager = default!;
-
+    [Dependency] private readonly RMCSharedWeaponControllerSystem _rmcSharedWeaponController = default!;
+ 
     private const float InteractNextFire = 0.3f;
     private const double SafetyNextFire = 0.5;
     private const float EjectOffset = 0.4f;
@@ -206,6 +208,14 @@ public abstract partial class SharedGunSystem : EntitySystem
             gunComp = gun;
             return true;
         }
+
+        //from Big R, ported into Misfits
+        if (_rmcSharedWeaponController.TryGetControlledWeapon(entity, out var weapon, out gunComp))
+        {
+            gunEntity = weapon.Value;
+            return true;
+        }
+        //
 
         return false;
     }
