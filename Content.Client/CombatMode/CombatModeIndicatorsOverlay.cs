@@ -6,9 +6,11 @@ using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Serialization;
 using Robust.Client.UserInterface;
+using Content.Client._RMC.Emplacements;
 using Robust.Shared.Enums;
 using Robust.Shared.Graphics;
 using Robust.Shared.Utility;
+
 
 namespace Content.Client.CombatMode;
 
@@ -25,6 +27,7 @@ public sealed class CombatModeIndicatorsOverlay : Overlay
     private readonly IEyeManager _eye;
     private readonly CombatModeSystem _combat;
     private readonly HandsSystem _hands = default!;
+    private readonly RMCWeaponControllerSystem _rmcWeaponController;
 
     private readonly Texture _gunSight;
     private readonly Texture _gunBoltSight;
