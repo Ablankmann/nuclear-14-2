@@ -1,11 +1,11 @@
-using Content.Shared._RMC14.Emplacements;
-using Content.Shared._RMC14.Weapons.Ranged.Overheat;
+using Content.Shared._RMC.Emplacements;
+using Content.Shared._RMC.Weapons.Ranged.Overheat;
 using Content.Shared.Foldable;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Client.GameObjects;
 using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
 
-namespace Content.Client._RMC14.Emplacements;
+namespace Content.Client._RMC.Emplacements;
 
 public sealed class WeaponMountSystem : SharedWeaponMountSystem
 {
