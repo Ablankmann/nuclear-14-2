@@ -148,7 +148,7 @@ public abstract partial class SharedGunSystem
         // If no ammo then check for autoeject
         if (component.AutoEject && count == 0)
         {
-            EjectMagazine(uid, component);
+            EjectMagazine(uid, component, user); //RMC14, ported into Misfits
             Audio.PlayPredicted(component.SoundAutoEject, uid, user);
         }
 
