@@ -8691,3 +8691,10 @@ Entries:
   id: 6201
   time: '2026-07-09T17:38:43.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/993
+- author: Dpellowski
+  changes:
+    - type: Tweak
+      message: Supporter GUI auto refreshes on open
+  id: 6202
+  time: '2026-07-09T19:28:58.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/996
