@@ -19,9 +19,7 @@
       - N14WallRockAndesiteMining
       - N14WallRockBasaltMining
       - N14WallRockDroughtSlantedMining
-      - N14SpawnMobCazador
-      - N14SpawnMobBloatfly
-    chance: .80
+    chance: 0.95
     rarePrototypes:
       - Barricade
       - RandomWoodenStructure
@@ -30,7 +28,6 @@
       - RandomWoodenStructure
       - RandomBrownStalagmite
       - N14RockGreySalt
-      - N14WallRockSalt
       - N14WastelandFloraWildCaveFungus
       - N14SpawnMobGiantAnt
       - N14SpawnMobGiantFireAnt
@@ -42,8 +39,10 @@
       - FloraRockSolid01
       - FloraRockSolid02
       - FloraRockSolid03
+      - N14SpawnMobCazador
+      - N14SpawnMobBloatfly
       - N14BarricadeWoodTall
-    rareChance: 0.20
+    rareChance: 0.10
 
 - type: entity
   name: Crystal Spawner
