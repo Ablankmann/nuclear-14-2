@@ -188,7 +188,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 1000000000
+        damage: 10000
 
 - type: entity
   id: AltarConvertFestival

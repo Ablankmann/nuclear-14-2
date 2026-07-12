@@ -1,26 +1,34 @@
 ﻿- type: entity
+  parent: BaseTree
   id: BasePrayerTree
   abstract: true
   components:
   - type: Prayable
-  - type: SpriteFade
-  - type: Clickable
-  - type: Sprite
-    noRot: true
-    sprite: Objects/Decoration/Flora/flora_trees.rsi
-    drawdepth: Overdoors
-    offset: 0,0.9
-  - type: Physics
-    bodyType: Static
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.35,-0.4,0.35,0.4"
-        density: 1000
-        layer:
-        - WallLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10000
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/tree_fell.ogg
+          params:
+            volume: 5
+            variation: 0.05
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          N14FloraLogTimber:
+            min: 2
+            max: 8
+          HeadSkeleton:
+            min: 1
+            max: 1
+          MaterialBones1:
+            min: 3
+            max: 10
 
 
 - type: entity
