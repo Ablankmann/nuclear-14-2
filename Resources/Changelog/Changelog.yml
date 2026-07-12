@@ -8887,3 +8887,10 @@ Entries:
   id: 6214
   time: '2026-07-12T01:42:31.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/990
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Added back spray paint to loadouts.
+  id: 6215
+  time: '2026-07-12T05:40:57.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1008
