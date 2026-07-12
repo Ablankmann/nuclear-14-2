@@ -8848,3 +8848,17 @@ Entries:
   id: 6211
   time: '2026-07-12T00:15:01.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1006
+- author: Vixting
+  changes:
+    - type: Add
+      message: >-
+        Added a control panel to outside of vault, can be accessed if you have a
+        pip boy & are in a active raid with the vault. Play minigame to hack
+        open vault door, bolting it open for 20m. 
+    - type: Fix
+      message: 'Fixed case of dissapearing chemvend & the box of unopenning '
+    - type: Fix
+      message: Fixed disposal unit
+  id: 6212
+  time: '2026-07-12T01:14:51.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/976
