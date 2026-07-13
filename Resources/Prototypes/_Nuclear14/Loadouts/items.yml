@@ -1,4 +1,4 @@
-- type: loadout
+﻿- type: loadout
   id: N14InstrumentBanjo
   category: Items
   cost: 0
@@ -281,7 +281,7 @@
 
 
 # Misc
-# Misfits Change: Removed bottlecap (N14CurrencyCap100) loadout entry — caps are no longer granted to players at round start via loadouts.
+# Misfits Change: Removed bottlecap (N14CurrencyCap100) loadout entry â€” caps are no longer granted to players at round start via loadouts.
 #- type: loadout
 #  id: N14CurrencyCap100
 #  category: Items
@@ -336,6 +336,22 @@
     - N14HealingPoultice
 
 # Spray Paint
+- type: loadout
+  id: LoadoutStimpakDirty
+  category: Items
+  cost: 1
+  items:
+    - N14StimpakDirty
+
+- type: loadout
+  id: LoadoutStimpak
+  category: Items
+  cost: 4
+  items:
+    - N14Stimpak
+
+
+# Paints
 
 - type: loadout
   id: LoadoutSprayPaintBlue
@@ -385,3 +401,5 @@
   cost: 0
   items:
     - SprayPaintGreen
+
+
