@@ -37,12 +37,6 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
   items:
     - N14ClothingHeadHatBeanie
 
@@ -99,13 +93,6 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
-    - !type:CharacterDepartmentRequirement
-       inverted: true
-       departments:
-       - Vault
-       - BrotherhoodOfSteel
-       - NCR
-       - Rangers
   items:
     - N14ClothingHeadHatTribalOutcastHood
 
@@ -187,14 +174,6 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
-    - !type:CharacterDepartmentRequirement
-       inverted: true
-       departments:
-       - Vault
-       - BrotherhoodOfSteel
-       - NCR
-       - CaesarLegion
-       - Rangers
   items:
     - N14ClothingTribalMuffaloskull
 
@@ -212,14 +191,6 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPrisoner
-    - !type:CharacterDepartmentRequirement
-       inverted: true
-       departments:
-       - Vault
-       - BrotherhoodOfSteel
-       - NCR
-       - CaesarLegion
-       - Rangers
   items:
     - N14ClothingTribalRadstagSkull
 
