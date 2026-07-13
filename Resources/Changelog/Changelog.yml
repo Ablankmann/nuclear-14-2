@@ -8922,3 +8922,12 @@ Entries:
   id: 6217
   time: '2026-07-12T23:38:18.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1010
+- author: Bradysgaming
+  changes:
+    - type: Remove
+      message: Undid the whole loadout killing thing. Larp to your hearts content
+    - type: Tweak
+      message: Unfaction locked some larp items
+  id: 6218
+  time: '2026-07-13T02:02:57.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1011
