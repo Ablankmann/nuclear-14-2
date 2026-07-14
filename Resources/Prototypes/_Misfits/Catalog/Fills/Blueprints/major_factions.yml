@@ -82,13 +82,3 @@
     - id: N14BlueprintVaultArmorT2
     - id: N14BlueprintVaultArmorT1
 
-    #TODO: When Enclave blueprints are in, expand this with weapons & armor.
-
-- type: entity
-  id: MisfitsCrateAluminiumBlueprintsEnclave
-  suffix: Filled, Blueprints, Enclave
-  parent: N14CrateAluminium
-  components:
-  - type: StorageFill
-    contents:
-    - id: N14BlueprintEnclaveBrainwashCircuit
