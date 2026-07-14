@@ -13,4 +13,4 @@
         amount: 1
         doAfter: 4
   - node: chip
-    entity: NCClothingCollarEnclaveRecruit
+    entity: NCClothingChipEnclaveRecruit
