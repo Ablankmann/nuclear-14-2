@@ -6,19 +6,19 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Misfits.Clothing;
 
 /// <summary>
-/// Marks an NCR prisoner ankle bracelet as lock-restricted equipment.
-/// NCR officers (Lieutenant, Ranger) can remove it via AccessReader. Others may cut it off
+/// Marks an Enclave implanter device as lock-restricted equipment.
+/// Enclave officers (Senior, Junior, Commander) can remove it via AccessReader. Others may pry it out
 /// with wire cutters after a 20-second DoAfter.
-/// Crafted bracelets produce a unique paired key that also unlocks them if re-applied.
+/// Crafted chips produce a unique paired key that also unlocks them if re-applied.
 /// </summary>
 [RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
-public sealed partial class NCRPrisonerBraceletComponent : Component
+public sealed partial class EnclaveBrainwashChipComponent : Component
 {
     /// <summary>
-    /// Crafted bracelets spawn this key prototype, then stamp it with a unique access tag.
+    /// Crafted chips spawn this key prototype, then stamp it with a unique access tag.
     /// </summary>
     [DataField]
-    public EntProtoId KeyPrototype = "N14IDKeyNCRPrisonerBracelet";
+    public EntProtoId KeyPrototype = "N14IDKeyEnclaveBrainwashChipKey";
 
     /// <summary>
     /// Tool quality required to forcibly cut open a locked bracelet.
@@ -36,7 +36,7 @@ public sealed partial class NCRPrisonerBraceletComponent : Component
     /// Prefix used when generating unique runtime access tags for crafted bracelets.
     /// </summary>
     [DataField]
-    public string RandomAccessPrefix = "NCRPrisonerBracelet";
+    public string RandomAccessPrefix = "EnclaveBrainwashChip";
 
     [DataField]
     public int RandomKeyMin = 1000;
@@ -52,10 +52,10 @@ public sealed partial class NCRPrisonerBraceletComponent : Component
 }
 
 /// <summary>
-/// Fired when a rescue tool finishes cutting a locked NCR prisoner bracelet.
+/// Fired when a rescue tool finishes cutting a locked Enclave brainwash chip.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed partial class NCRPrisonerBraceletCutDoAfterEvent : DoAfterEvent
+public sealed partial class EnclaveBrainwashChipCutDoAfterEvent : DoAfterEvent
 {
     public override DoAfterEvent Clone()
     {
