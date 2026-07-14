@@ -17,7 +17,7 @@ using Robust.Shared.Random;
 namespace Content.Server._Misfits.Clothing;
 
 /// <summary>
-/// Handles NCR prisoner bracelet lock enforcement, rescue cutting with emote broadcast,
+/// Handles Enclave chip lock enforcement, rescue cutting with emote broadcast,
 /// and unique key generation when a bracelet is crafted. Mirrors the Legion Collars & NCR Bracelets.
 /// </summary>
 public sealed class EnclaveBrainwashChipSystem : EntitySystem
@@ -63,7 +63,7 @@ public sealed class EnclaveBrainwashChipSystem : EntitySystem
         if (!TryComp<LockComponent>(ent, out var lockComp) || !lockComp.Locked)
             return;
 
-        // Rescue path: cut open the bracelet with wire cutters or another cutting tool.
+        // Rescue path: cut out the implanter with wire cutters or another cutting tool.
         var started = _tools.UseTool(args.Used, args.User, ent, ent.Comp.CutUnlockTime, ent.Comp.CutToolQuality,
             new EnclaveBrainwashChipCutDoAfterEvent());
 
