@@ -1,6 +1,6 @@
 - type: latheRecipe
   id: N14BPEnclaveCircuit
-  result: N14Circuit
+  result: N14MaterialCircuitry
   completetime: 3
   requiresBlueprint: true
   availableFaction:
@@ -16,4 +16,4 @@
   availableFaction:
   - Enclave
   materials:
-    N14Circuit: 1
+    N14MaterialCircuitry: 1
