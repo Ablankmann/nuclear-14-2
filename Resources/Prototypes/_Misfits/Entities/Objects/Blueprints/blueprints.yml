@@ -1156,8 +1156,9 @@
   parent: N14BlueprintBase
   id: N14BlueprintEnclaveBrainwashCircuit
   name: Enclave Implanter Circuit Specifications
-  description: Various pieces of encoding specifications that make Enclave implanters actually function. Allows production of Enclave Implanter Circuits.
+  description: Various pieces of encoding specifications that make Enclave implanters actually function. Allows converstion of circuits into % from Enclave Implanter Chipboards.
   components:
   - type: Blueprint
     recipes:
     - N14BPEnclaveCircuit
+    - N14BPEnclaveCircuitImplanter
