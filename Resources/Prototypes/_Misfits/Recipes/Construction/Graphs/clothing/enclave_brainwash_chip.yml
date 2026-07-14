@@ -12,5 +12,5 @@
       - material: CircuitEnclave
         amount: 1
         doAfter: 4
-  - node: collar
+  - node: chip
     entity: NCClothingCollarEnclaveRecruit
