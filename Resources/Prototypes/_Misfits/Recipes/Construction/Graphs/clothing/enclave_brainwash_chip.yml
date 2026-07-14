@@ -9,7 +9,7 @@
       - material: Steel
         amount: 2
         doAfter: 4
-      - material: CircuitEnclave
+      - material: N14CircuitEnclave
         amount: 1
         doAfter: 4
   - node: chip
