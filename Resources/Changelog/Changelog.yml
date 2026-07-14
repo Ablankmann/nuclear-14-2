@@ -8940,3 +8940,16 @@ Entries:
   id: 6219
   time: '2026-07-14T01:53:41.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1012
+- author: aftemath434
+  changes:
+    - type: Tweak
+      message: >-
+        Nightkin Rework such as Stealth needs a 30 second recharge after turning
+        off/ Standing still while cloaked = fully invisible; moving = faint
+        shimmer / Better with guns much tighter aim, less recoil, no slowdown
+        holding rifles / The role can now be picked by people with the Nightkin
+        whitelist /  No more spare Stealth Boy item on spawn (the implant is
+        built in)
+  id: 6220
+  time: '2026-07-14T01:58:56.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1014
