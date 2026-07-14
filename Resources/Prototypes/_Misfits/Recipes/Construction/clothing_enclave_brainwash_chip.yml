@@ -1,0 +1,11 @@
+- type: construction
+  name: enclave implanter device
+  id: EnclaveBrainwashChip
+  graph: EnclaveBrainwashChip
+  startNode: start
+  targetNode: chip
+  category: construction-category-clothing
+  description: An Enclave implanting chip used to condition new recruits from the Wasteland.
+  icon: { sprite: Corvax/Clothing/Bandage/bandageSerfMBOS.rsi, state: icon }
+  objectType: Item
+  hide: false
