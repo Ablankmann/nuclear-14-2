@@ -1150,3 +1150,14 @@
     - N14BPTribeAmmoBox50
     - N14BPTribeAmmoBox45-70
     - N14BPTribeAmmoMag556Pipe
+
+# --- Enclave Chip ---
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintEnclaveBrainwashCircuit
+  name: Enclave Implanter Circuit Specifications
+  description: Various pieces of encoding specifications that make Enclave implanters actually function. Allows production of Enclave Implanter Circuits.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPEnclaveCircuit
