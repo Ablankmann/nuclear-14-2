@@ -1780,15 +1780,12 @@
 
 
 - type: loadout
-  id: N14LongSwordBoS
+  id: N14LongSword
   category: Weapons
   cost: 2
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutMelee
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - BrotherhoodOfSteel # Longsword with the medieval themed faction
   items:
     - N14LongSword
 
