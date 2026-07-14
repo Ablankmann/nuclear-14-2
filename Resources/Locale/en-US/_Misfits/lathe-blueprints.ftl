@@ -86,6 +86,7 @@ lathe-category-blueprint-tribe-ammo-t4 = Tribe Ammo - Tier 4
 
 lathe-category-blueprint-robobrain = Robobrain Chassis
 lathe-category-blueprint-mmi = MMI Schematic
+lathe-category-blueprint-enclave-chip = Circuit to Chipboard Conversion
 
 # #Misfits Add - C-27 chassis armor blueprint categories.
 lathe-category-blueprint-c27-armor-generic = C-27 Armor (Generic)
