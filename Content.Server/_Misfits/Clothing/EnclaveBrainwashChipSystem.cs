@@ -18,9 +18,9 @@ namespace Content.Server._Misfits.Clothing;
 
 /// <summary>
 /// Handles NCR prisoner bracelet lock enforcement, rescue cutting with emote broadcast,
-/// and unique key generation when a bracelet is crafted.
+/// and unique key generation when a bracelet is crafted. Mirrors the Legion Collars & NCR Bracelets.
 /// </summary>
-public sealed class NCRPrisonerBraceletSystem : EntitySystem
+public sealed class EnclaveBrainwashChipSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedToolSystem _tools = default!;
@@ -34,13 +34,13 @@ public sealed class NCRPrisonerBraceletSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<NCRPrisonerBraceletComponent, IsUnequippingAttemptEvent>(OnUnequippingAttempt);
-        SubscribeLocalEvent<NCRPrisonerBraceletComponent, InteractUsingEvent>(OnInteractUsing);
-        SubscribeLocalEvent<NCRPrisonerBraceletComponent, NCRPrisonerBraceletCutDoAfterEvent>(OnBraceletCut);
-        SubscribeLocalEvent<NCRPrisonerBraceletComponent, ConstructionCompletedEvent>(OnConstructionCompleted);
+        SubscribeLocalEvent<EnclaveBrainwashChipComponent, IsUnequippingAttemptEvent>(OnUnequippingAttempt);
+        SubscribeLocalEvent<EnclaveBrainwashChipComponent, InteractUsingEvent>(OnInteractUsing);
+        SubscribeLocalEvent<EnclaveBrainwashChipComponent, EnclaveBrainwashChipCutDoAfterEvent>(OnBChipCut);
+        SubscribeLocalEvent<EnclaveBrainwashChipComponent, ConstructionCompletedEvent>(OnConstructionCompleted);
     }
 
-    private void OnUnequippingAttempt(Entity<NCRPrisonerBraceletComponent> ent, ref IsUnequippingAttemptEvent args)
+    private void OnUnequippingAttempt(Entity<EnclaveBrainwashChipComponent> ent, ref IsUnequippingAttemptEvent args)
     {
         if (args.Equipment != ent.Owner)
             return;
@@ -48,14 +48,14 @@ public sealed class NCRPrisonerBraceletSystem : EntitySystem
         if (!TryComp<LockComponent>(ent, out var lockComp) || !lockComp.Locked)
             return;
 
-        // NCR officers (Lieutenant, Ranger) and holders of the paired bracelet key may remove it.
+        // Enclave officers (Senior, Junior, Commander) and holders of the paired chip key may remove it.
         if (_lock.TryUnlock(ent, args.Unequipee, lockComp, skipDoAfter: true))
             return;
 
         args.Cancel();
     }
 
-    private void OnInteractUsing(Entity<NCRPrisonerBraceletComponent> ent, ref InteractUsingEvent args)
+    private void OnInteractUsing(Entity<EnclaveBrainwashChipComponent> ent, ref InteractUsingEvent args)
     {
         if (args.Handled)
             return;
@@ -65,7 +65,7 @@ public sealed class NCRPrisonerBraceletSystem : EntitySystem
 
         // Rescue path: cut open the bracelet with wire cutters or another cutting tool.
         var started = _tools.UseTool(args.Used, args.User, ent, ent.Comp.CutUnlockTime, ent.Comp.CutToolQuality,
-            new NCRPrisonerBraceletCutDoAfterEvent());
+            new EnclaveBrainwashChipCutDoAfterEvent());
 
         if (started)
         {
@@ -75,7 +75,7 @@ public sealed class NCRPrisonerBraceletSystem : EntitySystem
             {
                 var wearerName = Identity.Entity(wearer, EntityManager);
                 _chat.TrySendInGameICMessage(args.User,
-                    Loc.GetString("misfits-chat-prisoner-bracelet-removing", ("target", wearerName)),
+                    Loc.GetString("misfits-chat-enclave-bchip-removing", ("target", wearerName)),
                     InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
             }
         }
@@ -83,7 +83,7 @@ public sealed class NCRPrisonerBraceletSystem : EntitySystem
         args.Handled = started;
     }
 
-    private void OnBraceletCut(Entity<NCRPrisonerBraceletComponent> ent, ref NCRPrisonerBraceletCutDoAfterEvent args)
+    private void OnBChipCut(Entity<EnclaveBrainwashChipComponent> ent, ref EnclaveBrainwashChipCutDoAfterEvent args)
     {
         if (args.Cancelled)
             return;
@@ -94,7 +94,7 @@ public sealed class NCRPrisonerBraceletSystem : EntitySystem
         _lock.Unlock(ent, args.User, lockComp);
     }
 
-    private void OnConstructionCompleted(Entity<NCRPrisonerBraceletComponent> ent, ref ConstructionCompletedEvent args)
+    private void OnConstructionCompleted(Entity<EnclaveBrainwashChipComponent> ent, ref ConstructionCompletedEvent args)
     {
         if (ent.Comp.GeneratedKey || args.UserUid == null)
             return;
@@ -116,7 +116,7 @@ public sealed class NCRPrisonerBraceletSystem : EntitySystem
         keyAccess.Tags.Add(accessTag);
         Dirty(key, keyAccess);
 
-        _meta.SetEntityName(key, $"prisoner bracelet key #{randomKey}");
+        _meta.SetEntityName(key, $"implanting device key #{randomKey}");
         _hands.PickupOrDrop(args.UserUid.Value, key);
 
         ent.Comp.GeneratedKey = true;
