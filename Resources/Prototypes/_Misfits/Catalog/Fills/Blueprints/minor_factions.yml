@@ -40,4 +40,5 @@
   components:
   - type: StorageFill
     contents:
-    - id: BoxFolderGrey
+    - id: BoxFolderGrey 
+    - id: N14BlueprintEnclaveBrainwashCircuit

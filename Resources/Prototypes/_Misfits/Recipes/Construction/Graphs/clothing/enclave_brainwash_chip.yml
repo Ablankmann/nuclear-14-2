@@ -1,0 +1,16 @@
+- type: constructionGraph
+  id: EnclaveBrainwashChip
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: chip
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 4
+      - material: N14CircuitEnclave
+        amount: 1
+        doAfter: 4
+  - node: chip
+    entity: NCClothingChipEnclaveRecruit

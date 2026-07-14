@@ -1,0 +1,44 @@
+- type: entity
+  parent: Clothing
+  id: NCClothingBandageEnclaveBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi
+    state: fuse_3
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi/fuse_3.png
+    slots: [ bandage ]
+
+- type: entity
+  parent: Clothing
+  id: NCClothingChipEnclaveRecruit
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi
+    state: fuse_3
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi/fuse_3.png
+    slots: [ bandage ]
+  - type: AccessReader
+    access:
+    - [ "EnclaveOfficer" ] # Senior & Junior Enclave Officers.
+    - [ "EnclaveCommand" ] # Enclave Commander.
+  - type: Lock
+    locked: true
+    unlockTime: 2
+  - type: EnclaveBrainwashChip
+
+- type: entity
+  parent: NCClothingBandageEnclaveBase
+  id: NCClothingChipEnclaveRecruit
+  name: Enclave Implanting Device
+  description: A chip implanted into the back of new Enclave recruit necks for tracking, and conditioning.
+  components:
+  - type: Construction
+    graph: EnclaveBrainwashChip
+    node: chip
+  - type: ClothingFactionAndRoleAdd
+    faction: Enclave
+    role: EnclaveRecruit

@@ -1,0 +1,14 @@
+- type: entity
+  parent: N14JunkComponentMainboard
+  id: N14CircuitEnclave
+  name: enclave implanting device circuitboard
+  description: A sophisticated circuit board, used in the Enclave implanting device.
+  components:
+  - type: Sprite
+    state: frame
+  - type: Tag
+    tags:
+    - Mainboard
+  - type: Item
+    size: Small
+    storedRotation: 90

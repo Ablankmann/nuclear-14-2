@@ -1,0 +1,12 @@
+- type: entity
+  parent: N14IDKeyIronEmpty
+  id: N14IDKeyEnclaveBrainwashChipKey
+  name: implanter chip key
+  description: A stamped key needed to bypass the locking mechanism on an enclave implanting device. Via scanning, obviously.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: iron
+  - type: IdCard
+    nameLocId: n14-id-key-name
+    fullNameLocId: n14-id-key-full-name
